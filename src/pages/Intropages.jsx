@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import formImg from "../images/formContent.png";
 import previewImg from "../images/previewcontent.png";
+import { FileText, Check, Sparkles, Target, ArrowLeft, ArrowRight } from 'lucide-react';
 
 const IntroPages = ({ onFinish }) => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -96,12 +97,12 @@ const IntroPages = ({ onFinish }) => {
                 {/* Page 1 */}
                 {currentPage === 1 && (
                     <div className="intro-page intro-page-welcome">
-                        <div className="welcome-icon">📄</div>
+                        <div className="welcome-icon"><FileText size={48} /></div>
                         <h1>{currentPageData.title}</h1>
                         <div className="features-list">
                             {currentPageData.content.map((item, index) => (
                                 <div key={index} className="feature-item">
-                                    <span className="check-icon">✓</span>
+                                    <span className="check-icon"><Check size={16} /></span>
                                     <span>{item}</span>
                                 </div>
                             ))}
@@ -140,7 +141,7 @@ const IntroPages = ({ onFinish }) => {
                                 <h3>Key Features:</h3>
                                 {currentPageData.rightContent.map((item, index) => (
                                     <div key={index} className="feature-highlight">
-                                        <span className="highlight-icon">✨</span>
+                                        <span className="highlight-icon"><Sparkles size={16} /></span>
                                         <span>{item}</span>
                                     </div>
                                 ))}
@@ -157,7 +158,7 @@ const IntroPages = ({ onFinish }) => {
                 {currentPage === 4 && (
                     <div className="intro-page intro-page-final">
                         <div className="final-content">
-                            <div className="success-icon">🎯</div>
+                            <div className="success-icon"><Target size={48} /></div>
                             <h1>{currentPageData.title}</h1>
                             <div className="final-messages">
                                 {currentPageData.finalContent.map((item, index) => (
@@ -182,7 +183,7 @@ const IntroPages = ({ onFinish }) => {
                     onClick={handlePrevPage}
                     disabled={currentPage === 1}
                 >
-                    ← Back
+                    <ArrowLeft size={16} /> Back
                 </button>
                 
                 <div className="page-indicators">
@@ -199,7 +200,7 @@ const IntroPages = ({ onFinish }) => {
                     className="nav-btn next-btn"
                     onClick={handleNextPage}
                 >
-                    {currentPage === totalPages ? 'Finish' : 'Next →'}
+                    {currentPage === totalPages ? 'Finish' : <div style={{display:'flex', alignItems:'center', gap:'4px'}}>Next <ArrowRight size={16} /></div>}
                 </button>
             </div>
         </div>

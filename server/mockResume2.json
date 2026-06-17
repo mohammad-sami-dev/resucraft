@@ -134,7 +134,7 @@
         },
         {
             "title": "ResuCraft - dynamic and responsive CV Builder application",
-            "link": "https://resume-baker.netlify.app",
+            "link": "https://ResuCraft.netlify.app",
             "description": "Designed and built a real-time resume builder with synchronized form input and live CV preview.",
             "skillsUsed": [
                 "React",

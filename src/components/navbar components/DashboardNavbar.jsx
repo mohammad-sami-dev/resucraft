@@ -9,6 +9,8 @@ import { uploadResume } from "../../services/resumeUpload.service.js"
 
 import API from '../../api.js';
 
+import { Menu, Plus, LogOut, Trash2, FileUp } from 'lucide-react';
+
 const DashboardNavbar = ({
     handleLogout,
     setGlobalLoading
@@ -66,7 +68,7 @@ const DashboardNavbar = ({
                     aria-expanded={mobileMenuOpen}
                     aria-controls="builder-mobile-actions"
                 >
-                    ☰ Menu
+                    <Menu size={20} /> Menu
                 </button>
 
                 <div
@@ -77,7 +79,7 @@ const DashboardNavbar = ({
                         Created {String(cvDownloads).padStart(2, "0")} CVs.
                     </div> */}
                     <label className='nav-upload'>
-                        Import Resume
+                        <FileUp size={16} /> Import Resume
                         <input
                             type='file'
                             accept='pdf'
@@ -93,18 +95,18 @@ const DashboardNavbar = ({
                             }}
                         ></input>
                     </label>
-                    <button onClick={() => { navigate('/builder'); setMobileMenuOpen(false); }}>+ New CV</button>
+                    <button onClick={() => { navigate('/builder'); setMobileMenuOpen(false); }}><Plus size={16} /> New CV</button>
                     <button
                         className="logout-btn"
                         onClick={() => { handleLogout(); setMobileMenuOpen(false); }}
                     >
-                        Logout
+                        <LogOut size={16} /> Logout
                     </button>
                     <button
                         onClick={() => { deleteAccount(); setMobileMenuOpen(false); }}
                         disabled={deletingAccount}
                     >
-                        {deletingAccount ? "Deleting..." : "Delete account"}
+                        {deletingAccount ? "Deleting..." : <><Trash2 size={16} /> Delete account</>}
                     </button>
                 </div>
 

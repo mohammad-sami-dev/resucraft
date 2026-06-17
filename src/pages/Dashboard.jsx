@@ -8,14 +8,15 @@ import AppFooter from '../components/common/AppFooter.jsx';
 import Feedback from '../components/feedback/Feedback.jsx';
 
 import { 
-  FiEdit2, 
-  FiTrash2, 
-  FiPlus, 
-  FiFileText, 
-  FiCalendar,
-  FiDownload,
-  FiEye
-} from 'react-icons/fi';
+  Pencil, 
+  Trash2, 
+  Plus, 
+  FileText, 
+  Calendar,
+  Download,
+  Eye,
+  MoreHorizontal
+} from 'lucide-react';
 
 const Dashboard = ({setGlobalLoading}) => {
     const [cvs, setCvs] = useState([]);
@@ -150,11 +151,11 @@ const Dashboard = ({setGlobalLoading}) => {
                 {/* Welcome Section */}
                 <div className='welcome-section'>
                     <div className='welcome-content'>
-                        <h1>Welcome back, {username || 'User'}! 👋</h1>
+                        <h1>Welcome back, {username || 'User'}!</h1>
                         <p>Manage and create professional resumes in one place</p>
                     </div>
                     <button className='create-new-btn' onClick={handleCreateNew}>
-                        <FiPlus size={20} />
+                        <Plus size={20} />
                         Create New CV
                     </button>
                 </div>
@@ -163,7 +164,7 @@ const Dashboard = ({setGlobalLoading}) => {
                 <div className='stats-overview'>
                     <div className='stat-card'>
                         <div className='stat-icon'>
-                            <FiFileText size={24} />
+                            <FileText size={24} />
                         </div>
                         <div className='stat-content'>
                             <h3>{stats.total}</h3>
@@ -172,7 +173,7 @@ const Dashboard = ({setGlobalLoading}) => {
                     </div>
                     <div className='stat-card'>
                         <div className='stat-icon'>
-                            <FiCalendar size={24} />
+                            <Calendar size={24} />
                         </div>
                         <div className='stat-content'>
                             <h3>{stats.lastCreated ? formatDate(stats.lastCreated.createdAt) : 'N/A'}</h3>
@@ -181,7 +182,7 @@ const Dashboard = ({setGlobalLoading}) => {
                     </div>
                     <div className='stat-card'>
                         <div className='stat-icon'>
-                            <FiEdit2 size={24} />
+                            <Pencil size={24} />
                         </div>
                         <div className='stat-content'>
                             <h3>{stats.mostEdited?.title || 'None'}</h3>
@@ -213,12 +214,12 @@ const Dashboard = ({setGlobalLoading}) => {
                     ) : cvs.length === 0 ? (
                         <div className='empty-state'>
                             <div className='empty-icon'>
-                                <FiFileText size={64} />
+                                <FileText size={64} />
                             </div>
                             <h3>No CVs Yet</h3>
-                            <p>Create your first professional resume to get started</p>
+                            <p>No resumes added yet — click the button below to add your first entry and start building your career!</p>
                             <button className='empty-action-btn' onClick={handleCreateNew}>
-                                <FiPlus size={18} />
+                                <Plus size={18} />
                                 Create Your First CV
                             </button>
                         </div>
@@ -234,22 +235,22 @@ const Dashboard = ({setGlobalLoading}) => {
                                                 <span className="status-text">{cv.status || 'Draft'}</span>
                                             </div>
                                             <div className="cv-actions-dropdown">
-                                                <button className="dropdown-btn">⋯</button>
+                                                <button className="dropdown-btn"><MoreHorizontal size={18} /></button>
                                                 <div className="dropdown-content">
                                                     <button onClick={() => handleEdit(cv._id)}>
-                                                        <FiEdit2 /> Edit
+                                                        <Pencil /> Edit
                                                     </button>
                                                     <button onClick={() => handlePreview(cv._id)}>
-                                                        <FiEye /> Preview
+                                                        <Eye /> Preview
                                                     </button>
                                                     <button onClick={() => handleDownload(cv._id)}>
-                                                        <FiDownload /> Download
+                                                        <Download /> Download
                                                     </button>
                                                     <button 
                                                         className="delete-option"
                                                         onClick={() => deleteCv(cv._id)}
                                                     >
-                                                        <FiTrash2 /> Delete
+                                                        <Trash2 /> Delete
                                                     </button>
                                                 </div>
                                             </div>
@@ -261,7 +262,7 @@ const Dashboard = ({setGlobalLoading}) => {
                                                     className="preview-btn"
                                                     onClick={() => handlePreview(cv._id)}
                                                 >
-                                                    <FiEye size={20} />
+                                                    <Eye size={20} />
                                                 </button>
                                             </div>
                                             <img
@@ -274,11 +275,11 @@ const Dashboard = ({setGlobalLoading}) => {
                                             <h3 className="cv-title">{cv.title || "Untitled CV"}</h3>
                                             <div className="cv-meta">
                                                 <span className="meta-item">
-                                                    <FiCalendar size={14} />
+                                                    <Calendar size={14} />
                                                     {formatDate(cv.updatedAt || cv.createdAt)}
                                                 </span>
                                                 <span className="meta-item">
-                                                    <FiEdit2 size={14} />
+                                                    <Pencil size={14} />
                                                     {cv.version || 'v1.0'}
                                                 </span>
                                             </div>
@@ -289,14 +290,14 @@ const Dashboard = ({setGlobalLoading}) => {
                                                 className="action-btn edit-btn"
                                                 onClick={() => handleEdit(cv._id)}
                                             >
-                                                <FiEdit2 size={16} />
+                                                <Pencil size={16} />
                                                 Edit
                                             </button>
                                             <button 
                                                 className="action-btn download-btn"
                                                 onClick={() => handleDownload(cv._id)}
                                             >
-                                                <FiDownload size={16} />
+                                                <Download size={16} />
                                                 Download
                                             </button>
                                         </div>

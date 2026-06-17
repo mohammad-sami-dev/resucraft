@@ -53,7 +53,7 @@ export default function ResuCraftLogo({ size = 48, color = "#1e293b" }) {
           userSelect: "none",
         }}
       >
-        Resume<span style={{ color: "#6366f1" }}>Baker</span>
+        Resu<span style={{ color: "#6366f1" }}>Craft</span>
       </span>
     </div>
   );

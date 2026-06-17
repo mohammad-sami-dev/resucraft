@@ -86,7 +86,7 @@
 
 /* Contact info styling */
 .pdf1-general div:contains("@")::before {
-  content: "📧 ";
+  content: "Email:  ";
   margin-right: 4px;
 }
 

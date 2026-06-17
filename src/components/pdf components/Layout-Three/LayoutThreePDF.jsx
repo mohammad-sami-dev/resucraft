@@ -302,7 +302,7 @@ const LayoutThreePDF = ({
           }}
         >
           <Text style={{ fontSize: 7, color: "#7d838f" }}>Created with</Text>
-          <Link src="https://resume-baker.netlify.app" style={{ fontSize: 7, color: "#6b7280" }}>
+          <Link src="https://ResuCraft.netlify.app" style={{ fontSize: 7, color: "#6b7280" }}>
             ResuCraft
           </Link>
         </View>

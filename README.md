@@ -1,4 +1,4 @@
-# ResuCraft: Precision Resume Builder 🛠️
+# ResuCraft: Precision Resume Builder ️
 
 ResuCraft is a powerful, full-stack resume builder designed for professionals who need pixel-perfect, multi-page PDF resumes. It features a custom rendering engine that ensures your resume looks exactly as intended across all platforms.
 

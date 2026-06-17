@@ -62,7 +62,7 @@ const Languages = ({ data = [], setData, visible, setVisible }) => {
                                     className="lang-delete-btn"
                                     onClick={() => removeLanguage(index)}
                                 >
-                                    ✕
+                                    
                                 </button>
                             )}
                         </div>

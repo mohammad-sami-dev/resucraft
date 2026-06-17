@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
 tagText: {
   fontSize: 10,
   color: "#fff",
-  lineHeight: 1,   // 🔑 critical
+  lineHeight: 1,   //  critical
 },
 
   /* ===== SKILLS ===== */

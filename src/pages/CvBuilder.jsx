@@ -154,6 +154,8 @@ const CvBuilder = ({ setGlobalLoading }) => {
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
   const [pdfPreviewHeight, setPdfPreviewHeight] = useState(600);
   const [showFeedback, setShowFeedback] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
   const [viewportWidth, setViewPortWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 1200
   )
@@ -358,10 +360,12 @@ const CvBuilder = ({ setGlobalLoading }) => {
       return;
     }
 
+    setIsSaving(true);
     try {
       const token = localStorage.getItem('token');
       if (!token) {
         alert('Please login to save CV');
+        setIsSaving(false);
         return;
       }
 
@@ -391,42 +395,52 @@ const CvBuilder = ({ setGlobalLoading }) => {
     } catch (err) {
       console.error('Error saving CV:', err.response?.data || err.message);
       alert('Failed to save CV. Please try again.');
+    } finally {
+      setIsSaving(false);
     }
   }, [cvId, cvName, currentLayout, formData, customStyles, visibleSections, navigate, generateThumbnail]);
 
 
   const handleDownloadPDF = async () => {
-    const blob = await pdf(
-      getPdfLayout(currentLayout, {
-        ...formData,
-        visibleSections,
-        style: customStyles
-      })
-    ).toBlob();
+    setIsDownloading(true);
+    try {
+      const blob = await pdf(
+        getPdfLayout(currentLayout, {
+          ...formData,
+          visibleSections,
+          style: customStyles
+        })
+      ).toBlob();
 
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `${cvName || "resume"}.pdf`;
-    a.click();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `${cvName || "resume"}.pdf`;
+      a.click();
 
-    URL.revokeObjectURL(url);
+      URL.revokeObjectURL(url);
 
-    // show feedback after download trigger (delayed)
-    const feedbackFlag = sessionStorage.getItem("feedbackPromptedAfterDownload");
-    if (!feedbackFlag) {
-      setTimeout(() => {
-        setShowFeedback(true);
-        sessionStorage.setItem("feedbackPromptedAfterDownload", "1");
-      }, 250);
-    }
+      // show feedback after download trigger (delayed)
+      const feedbackFlag = sessionStorage.getItem("feedbackPromptedAfterDownload");
+      if (!feedbackFlag) {
+        setTimeout(() => {
+          setShowFeedback(true);
+          sessionStorage.setItem("feedbackPromptedAfterDownload", "1");
+        }, 250);
+      }
 
 
-    // fire-and-forget metric update (don't block UI)
-    if (!import.meta.env.DEV) {
-      API.post("/api/metrics/download").catch((err) => {
-        console.error("Failed to update download metric:", err?.response?.data || err.message);
-      });
+      // fire-and-forget metric update (don't block UI)
+      if (!import.meta.env.DEV) {
+        API.post("/api/metrics/download").catch((err) => {
+          console.error("Failed to update download metric:", err?.response?.data || err.message);
+        });
+      }
+    } catch (err) {
+      console.error("PDF generation failed:", err);
+      alert("Failed to generate PDF. Please try again.");
+    } finally {
+      setIsDownloading(false);
     }
   };
 
@@ -488,7 +502,7 @@ const CvBuilder = ({ setGlobalLoading }) => {
   return (
     <>
 
-      <div className="cv-builder-app">
+      <div className="ResuCraft-app">
         <BuilderNavbar
           activeTab={activeTab}
           setActiveTab={setActiveTab}
@@ -502,11 +516,13 @@ const CvBuilder = ({ setGlobalLoading }) => {
           navigateToDashboard={navigate}
           username={username}
           setGlobalLoading={setGlobalLoading}
+          isDownloading={isDownloading}
+          isSaving={isSaving}
         />
 
-        <div className="cv-builder-container">
+        <div className="ResuCraft-container">
           {showForm && (
-            <div className="cv-builder-form-container">
+            <div className="ResuCraft-form-container">
               {activeTab === "content" && (
                 <div className="form-wizard-wrapper">
                   <Suspense fallback={<div>Loading form...</div>}>
@@ -553,7 +569,7 @@ const CvBuilder = ({ setGlobalLoading }) => {
           )}
 
           <div
-            className={`cv-builder-preview-container ${activeTab === "preview" ? "full-screen" : ""}`}
+            className={`ResuCraft-preview-container ${activeTab === "preview" ? "full-screen" : ""}`}
             style={
               activeTab === "preview"
                 ? { height: `${pdfPreviewHeight}px`, minHeight: `${pdfPreviewHeight}px` }

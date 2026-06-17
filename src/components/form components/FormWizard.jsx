@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { FORM_SECTIONS } from "../../constants/formsection";
 import FormSection from "./FormSection";
 import '../../styles/form styles/FormWizard.css';
@@ -92,10 +93,16 @@ const FormWizard = ({
 
             </div>
 
+const FormWizard = ({
+...
             {/* Fixed navigation */}
             <div className="wizard-nav">
-                <button disabled={step === 0} onClick={prev}>Previous</button>
-                <button disabled={step === FORM_SECTIONS.length - 1} onClick={next}>Next</button>
+                <button disabled={step === 0} onClick={prev} className="btn-secondary">
+                    <ChevronLeft size={18} /> Previous
+                </button>
+                <button disabled={step === FORM_SECTIONS.length - 1} onClick={next} className="btn-primary">
+                    Next <ChevronRight size={18} />
+                </button>
             </div>
         </div>
     );

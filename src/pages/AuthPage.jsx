@@ -9,7 +9,7 @@ import AppFooter from "../components/common/AppFooter.jsx"
 import Feedback from '../components/feedback/Feedback.jsx';
 import { uploadResume } from "../services/resumeUpload.service.js"
 
-import { FiEye, FiEyeOff } from "react-icons/fi";
+import { X, Rocket, Eye, EyeOff, User, Save, RefreshCw, TrendingUp, Palette, LogIn } from 'lucide-react';
 
 const AuthPage = ({ setGlobalLoading }) => {
   const [isLogin, setIsLogin] = useState(false);
@@ -143,7 +143,7 @@ const AuthPage = ({ setGlobalLoading }) => {
             <div className='intro-header'>
               <h2>Getting Started</h2>
               <button className='close-intro' onClick={handleIntroFinish}>
-                ✕
+                <X size={20} />
               </button>
             </div>
             <div className='intro-content-wrapper'>
@@ -179,7 +179,7 @@ const AuthPage = ({ setGlobalLoading }) => {
             </div>
             <div className="import-resume-box">
               <label className="import-resume-btn">
-                🚀 Upload Resume — Get a Professional Version in Seconds
+                <Rocket size={18} /> Upload Resume — Get a Professional Version in Seconds
                 <small>No signup required (Guest mode)</small>
 
                 <input
@@ -263,7 +263,7 @@ const AuthPage = ({ setGlobalLoading }) => {
                     aria-label={showPassword ? 'Hide password' : 'Show password'}
                     aria-pressed={showPassword}
                   >
-                    {showPassword ? '🙈' : '👁️'}
+                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                   </button>
                 </div>
                 {errors.password && <span className='error-msg'>{errors.password}</span>}
@@ -308,7 +308,7 @@ const AuthPage = ({ setGlobalLoading }) => {
                 className='guest-btn'
                 onClick={handleGuestAccess}
               >
-                <span className='guest-icon'>👤</span>
+                <span className='guest-icon'><User size={18} /></span>
                 Continue as Guest
                 <small>Try without registration</small>
               </button>
@@ -326,10 +326,10 @@ const AuthPage = ({ setGlobalLoading }) => {
             <div className='benefits'>
               <h3>Why Register?</h3>
               <ul>
-                <li>💾 Save multiple resume versions</li>
-                <li>🔄 Access from any device</li>
-                <li>📈 Track your applications</li>
-                <li>🎨 Exclusive templates</li>
+                <li><Save size={16} /> Save multiple resume versions</li>
+                <li><RefreshCw size={16} /> Access from any device</li>
+                <li><TrendingUp size={16} /> Track your applications</li>
+                <li><Palette size={16} /> Exclusive templates</li>
               </ul>
             </div>
           </div>
