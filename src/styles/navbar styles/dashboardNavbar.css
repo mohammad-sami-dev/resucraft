@@ -1,0 +1,225 @@
+.logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+nav span {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1F2937;
+}
+
+
+.db-navbar {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: aqua;
+    position: fixed;
+    z-index: 1000;
+}
+.dashboard-info{
+    display: flex;
+    justify-content: space-around;
+    
+    padding-left: 15px;
+    padding-right: 15px;
+   
+    background: #3b82f6;
+    
+    border-radius:10px ;
+    
+    
+    margin:5px ;
+    
+}
+.dashboard-info h2{
+    font-size: 1.4rem;
+    color: #ffffff;
+}
+.dashboard-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding-right: 12px;
+    width: 65%;;
+} 
+.dashboard-buttons button,
+.dashboard-buttons .nav-upload {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: 0 12px;
+  margin: 0 10px;
+  min-width: 140px;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.25),
+    0 6px 12px rgba(0, 0, 0, 0.15);
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.15s ease,
+    background-color 0.2s ease;
+  background: #3b82f6;
+  color: white;
+  font: inherit;
+  font-weight: bold;
+   
+}
+.download-counter{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px; 
+   background: #3b82f6;
+  color: white;
+  
+    font: inherit;
+  font-weight: bold;
+    box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.25),
+    0 6px 12px rgba(0, 0, 0, 0.15);
+     border-radius: 6px;
+  
+}
+.nav-upload:hover{
+   transform: translateY(-1px);
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.40),
+    0 10px 18px rgba(0, 0, 0, 0.2);
+    background-color: #2563eb;
+}
+.dashboard-buttons  button:hover {
+    transform: translateY(-1px);
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.40),
+    0 10px 18px rgba(0, 0, 0, 0.2);
+    background-color: #2563eb;
+}
+
+.mobile-menu-toggle {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .mobile-menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    padding: 0 12px;
+    border: none;
+    border-radius: 8px;
+    background: #1f2937;
+    color: #fff;
+    font-weight: 600;
+  }
+  .mobile-menu-toggle:hover {
+    box-shadow: 0 8px 24px rgba(0,0,0.8,0.8);
+    font-weight: 700;
+
+  }
+
+  .userinfo-btn-navbar {
+    position: absolute;
+   
+    top: 65px;
+    right: 8px;
+    left: 8px;
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.16);
+    z-index: 1400;
+  }
+
+  .userinfo-btn-navbar.open {
+    display: flex;
+  }
+
+  .userinfo-btn-navbar button,
+  .userinfo-btn-navbar .nav-control,
+  .userinfo-btn-navbar .locked-btn-wrapper {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .db-navbar {
+  width: 100%;
+  left: 0;
+  right: 0;
+}
+
+.db-navbar .dashboard-buttons {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 12px;
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  background: #fff;
+  border-top: 1px solid #e5e7eb;
+  border-radius: 0;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.16);
+  z-index: 1400;
+}
+
+.db-navbar .dashboard-buttons.open {
+  display: flex;
+}
+
+.db-navbar .dashboard-buttons > button,
+.db-navbar .dashboard-buttons > .nav-upload,
+.db-navbar .dashboard-buttons > label {
+  width: 100%;
+  min-width: 100%;
+  margin: 0;
+  justify-content: center;
+}
+#builder-mobile-actions.userinfo-btn-navbar,
+.db-navbar .dashboard-buttons {
+  position: absolute;
+  top: 100%;      /* key: directly below navbar */
+  left: 0;
+  right: 0;
+  margin: 0;
+ 
+}
+
+.download-counter{
+  width: 100%;
+}
+
+}
+@media (min-width: 900px) and (max-width: 1115px) {
+  .userinfo-btn-navbar {
+    
+    font-size: .8rem;
+    font-weight: 200;
+    
+  }
+  .dashboard-buttons{
+    font-size: .8rem;
+    font-weight: 200;
+  }
+  
+}

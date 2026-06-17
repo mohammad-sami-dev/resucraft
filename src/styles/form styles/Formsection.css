@@ -1,0 +1,412 @@
+.form-wizard *,
+.form-section * {
+  box-sizing: border-box;
+}
+
+/* Base Section Styling */
+.form-section {
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Professional Card Style for All Sections */
+.form-section > div[class*="container"],
+.form-section > div[class*="section"] {
+  background: white;
+  border-radius: 12px;
+  padding: 28px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+  
+}
+
+.form-section > div[class*="container"]:hover,
+.form-section > div[class*="section"]:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Section Headers */
+.section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f1f5f9;
+ 
+}
+
+.section-header h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0;
+}
+
+
+
+/* Input Field Styling */
+.form-section input,
+.form-section textarea,
+.form-section select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  background: white;
+  color: black;
+}
+
+.form-section input:focus,
+.form-section textarea:focus,
+.form-section select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.form-section label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #475569;
+  margin-bottom: 8px;
+}
+
+/* Button Styling */
+.form-section button:not(.toggle-pill) {
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.form-section button:not(.toggle-pill):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* Remove button variant */
+.form-section button.remove-btn {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+/* Add Professional Toggle */
+.toggle-visibility-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 20px 0;
+  padding: 12px;
+  background: #b4c9e0;
+  border-radius: 8px;
+}
+
+.toggle-pill {
+  position: relative;
+  width: 108px;
+  height: 36px;
+  border-radius: 999px;
+  background: #cbd5e1;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.toggle-pill.on {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #e2e8f0;
+}
+
+.toggle-knob {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.toggle-pill.on .toggle-knob {
+  transform: translateX(72px);
+}
+
+.toggle-text-track {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 200%;
+  transition: transform 0.3s ease;
+  color: #e6e9ec;
+}
+
+.toggle-pill.on .toggle-text-track {
+  transform: translateX(-50%);
+}
+
+.toggle-text {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #000000;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: bold;
+}
+   
+.toggle-pill.on .toggle-text:first-child,
+.toggle-pill:not(.on) .toggle-text:last-child {
+  color: white;
+}
+
+/* Entry Items Styling */
+.education-section,
+.experience-section,
+.project-section {
+
+  width: 100%;
+}
+
+
+.education-entry,
+.experience-entry,
+.project-entry {
+  padding: 10px;
+  margin-bottom: 16px;
+  background: #f8fafc;
+  border-radius: 8px;
+  border-left: 4px solid #3b82f6;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.projects-key-feature{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.project-key-feature-form{
+  display: flex;
+}
+
+.add-feat-btn{
+  width: 100%;
+}
+.education-achievements-form,
+.experience-achievements-form {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 12px;
+  }
+
+
+.add-rem-edu-btn,
+.exp-add-rem-btn,
+.add-rem-proj-btn{
+  display: flex;
+  justify-content: space-between;
+}
+
+.language-entry-form{
+  display: flex;
+  gap: 5px;
+}
+.language-entry-form option,.language-entry-form input {
+  height: 50px;
+}
+.language-entry-form select {
+  height: 50px;
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 8px;
+}
+.add-lang-btn{
+  width: 100%;
+  margin-top: 5px;
+}
+
+/* Skills Container */
+.skill-container-input {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.skill-container-input input {
+  flex: 1;
+}
+
+.skills-container-btns button {
+  
+  height: 40px;
+  border-radius: 50%;
+  
+  font-size: 20px;
+}
+
+.custom-actions-row{
+  display: flex;
+  justify-content: space-between;
+}
+.custom-inline-actions{
+  display: flex;
+}
+.custom-section-block{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.add-custom-btn, .rem-custom-btn{
+  width: 100%;
+}
+.custom-container-form select{
+  height: 50px;
+}
+
+.custom-large-btn{
+  width: 100%;
+}
+
+/* Date Input */
+.date-input {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.date-input-field {
+  flex: 1;
+}
+ 
+/* Professional Scrollbar */
+.form-section::-webkit-scrollbar {
+  width: 6px;
+}
+
+.form-section::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.form-section::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.form-section::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 900px) {
+  .form-section > div[class*="container"],
+  .form-section > div[class*="section"] {
+    padding: 20px;
+  }
+  
+  .education-achievements-form,
+  .experience-achievements-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+  
+  .date-input {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .wizard-layout {
+    margin: 0 8px;
+    padding: 16px;
+  }
+  
+  .milestone-bar {
+    margin-right: 16px;
+  }
+ 
+  .add-rem-edu-btn,
+  .exp-add-rem-btn,
+  .add-rem-proj-btn,
+  .project-key-feature-form,
+  .skill-container-input,
+  .language-entry-form {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .skills-container-btns button {
+    width: 100%;
+    border-radius: 8px;
+    height: 40px;
+  }
+
+  .toggle-visibility-btn {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+      display: flex;
+  align-items: center;
+  justify-content: space-between;
+  }
+
+  .form-section button:not(.toggle-pill) {
+    width: 100%;
+  }
+
+
+}
+
+/* Success States */
+.form-section input:valid,
+.form-section textarea:valid {
+  border-color: #10b981;
+}
+
+/* Error States */
+.form-section input:invalid:focus,
+.form-section textarea:invalid:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.hobbies-container-form .hobby-entry{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 8px;
+}
+
+.hobbies-container-form  button{
+  width: 100%;
+}
+.hobbies-container-form .hobby-entry textarea{
+  height: 90px;
+}

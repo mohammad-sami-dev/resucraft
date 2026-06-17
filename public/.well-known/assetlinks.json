@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.resumebaker.app",
+      "sha256_cert_fingerprints": [
+        "A9:65:7B:67:C9:71:D5:D5:6B:28:B1:C7:D8:57:24:83:ED:A9:F2:4D:31:6A:10:FD:07:60:49:1A:7C:33:32:C1"
+      ]
+    }
+  }
+]

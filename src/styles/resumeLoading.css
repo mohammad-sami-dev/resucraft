@@ -1,0 +1,32 @@
+.ai-loading-screen {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #f7f9fc, #e6ecf5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  background: rgba(230, 236, 245, 0.5);
+}
+
+.ai-loading-card {
+  background: white;
+  padding: 40px 50px;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 400px;
+  
+}
+
+.ai-loading-card h2 {
+  margin-top: 10px;
+  font-size: 22px;
+  color: #2c3e50;
+}
+
+.ai-loading-card p {
+  font-size: 14px;
+  color: #666;
+  margin-top: 8px;
+}

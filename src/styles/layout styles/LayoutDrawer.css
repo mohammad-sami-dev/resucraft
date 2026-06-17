@@ -1,0 +1,70 @@
+/* Floating Button - Keep arrow, make more subtle */
+.layout-floating-btn {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1001;
+  width: 38px;
+  height: 58px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border: none;
+  background: #2c3e50;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.85;
+  transition: right 0.3s ease, opacity 0.3s ease;
+  z-index: 2000; 
+  font-size: 1.2rem;
+}
+
+
+.layout-floating-btn:hover {
+  opacity: 1;
+  background: #34495e;
+  font-weight: bold;
+}
+
+.layout-floating-btn.attached {
+ right: calc(250px + 6px);
+   
+}
+
+
+.layout-floating-btn:hover {
+  opacity: 1;
+  background: #34495e;
+}
+
+.layout-floating-btn.attached {
+  right: 250px;
+}
+
+/* Drawer - No vertical scrollbar */
+.layout-drawer {
+  position: fixed;
+  top: 0;
+  right: -250px;
+  width: 250px;
+  height: 100vh;
+  background: #ffffff;
+  z-index: 2000;
+  box-shadow: -2px 0 15px rgba(0, 0, 0, 0.1);
+  transition: right 0.3s ease;
+  overflow-x: hidden; /* Remove vertical scrollbar */
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid #e0e0e0;
+  opacity: 0.9;
+}
+
+.layout-drawer.open {
+  right: 0;
+}
+
+/* Header - Fixed height */

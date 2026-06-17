@@ -1,0 +1,424 @@
+/* ===== BASE STYLES ===== */
+.pdf-page {
+  width: 794px;
+  height: 1123px;           /* A4 */
+  padding: 48px 56px;
+  box-sizing: border-box;
+  background: white;
+  font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
+  color: #333;
+  line-height: 1.5;
+}
+   
+.pdf3-page{
+    width: 794px;
+  min-height: 1123px;
+  padding: 18px 26px;
+  font-family: "Arial", "Helvetica", sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #333;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+/* ===== TYPOGRAPHY ===== */
+.pdf3-section h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0;
+  text-align: center;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+
+.pdf3-section h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2c3e50;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 24px 0 16px 0;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #3498db;
+  position: relative;
+}
+
+
+
+.pdf3-section h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 18px 0 12px 0;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* ===== HEADER SECTION ===== */
+.pdf3-header {
+  text-align: center;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #2c3e50;
+}
+
+.pdf3-name {
+  font-size: 32px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.pdf3-title {
+  font-size: 16px;
+  color: #3498db;
+  font-weight: 600;
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+}
+
+.pdf3-contact {
+  font-size: 12px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.pdf3-contact span {
+  display: inline-block;
+  margin: 0 8px;
+  white-space: nowrap;
+}
+
+/* ===== PROFILE SUMMARY ===== */
+.pdf3-summary-content {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.6;
+  text-align: justify;
+}
+.pdf3-column h3{
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* ===== EXPERIENCE SECTION ===== */
+.pdf3-experience-item {
+  margin-bottom: 20px;
+  page-break-inside: avoid;
+}
+
+.pdf3-exp-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 6px;
+}
+
+.pdf3-exp-title {
+  flex: 1;
+}
+
+.pdf3-exp-title strong {
+  font-size: 15px;
+  color: #2c3e50;
+}
+
+.pdf3-exp-company {
+  font-size: 14px;
+  color: #555;
+  font-weight: 500;
+}
+
+.pdf3-exp-dates {
+  font-size: 12px;
+  color: #3498db;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.pdf3-exp-achievements ul {
+  padding-left: 18px;
+  margin: 8px 0;
+}
+
+.pdf3-exp-achievements li {
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 4px;
+  line-height: 1.5;
+  position: relative;
+}
+
+.pdf3-exp-achievements li::before {
+  content: "•";
+  color: #3498db;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+/* ===== EDUCATION SECTION ===== */
+.pdf3-education-item {
+  
+  page-break-inside: avoid;
+}
+
+.pdf3-edu-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: flex-start;
+  margin-bottom: 4px;
+}
+.pdf3-edu-title{
+  flex: 1;
+}
+
+.pdf3-edu-degree {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2c3e50;
+  flex: 1;
+}
+
+.pdf3-edu-school {
+  font-size: 13px;
+  color: #555;
+  font-weight: 500;
+}
+
+.pdf3-edu-dates {
+  font-size: 13px;
+  color: #7f8c8d;
+  white-space: nowrap;
+}
+
+.pdf3-edu-location,.pdf3-exp-location {
+  font-size: 13px;
+  color: #666;
+  font-style: italic;
+  margin-bottom: 6px;
+}
+
+.pdf3-edu-achievements ul {
+  padding-left: 16px;
+  margin: 6px 0;
+}
+
+.pdf3-edu-achievements li {
+  font-size: 11px;
+  color: #666;
+  margin-bottom: 3px;
+  line-height: 1.4;
+}
+
+/* ===== PROJECTS SECTION ===== */
+.pdf3-project-item {
+  margin-bottom: 20px;
+  page-break-inside: avoid;
+}
+
+.pdf3-project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 6px;
+}
+
+.pdf3-project-header strong {
+  font-size: 15px;
+  color: #2c3e50;
+}
+
+.pdf3-project-link {
+  font-size: 11px;
+  color: #3498db;
+  text-decoration: none;
+  word-break: break-all;
+  max-width: 200px;
+}
+
+.pdf3-project-description {
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.pdf3-project-skills {
+  margin: 8px 0;
+}
+
+.pdf3-project-skills strong {
+  font-size: 12px;
+  color: #555;
+  margin-right: 6px;
+}
+
+.pdf3-skills-list {
+  display: inline-block;
+}
+
+.pdf3-skill-tag {
+  display: inline-block;
+  background: #3498db;
+  color: white;
+  padding: 2px 8px;
+  margin: 0 4px 4px 0;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.pdf3-project-features {
+  margin: 8px 0;
+}
+
+.pdf3-project-features strong {
+  font-size: 12px;
+  color: #555;
+  margin-right: 6px;
+}
+
+.pdf3-project-features ul {
+  padding-left: 18px;
+  margin: 4px 0;
+}
+
+.pdf3-project-features li {
+  font-size: 11px;
+  color: #555;
+  margin-bottom: 3px;
+  line-height: 1.4;
+}
+
+/* ===== SKILLS SECTION ===== */
+.pdf3-skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.pdf3-skill-item {
+  display: inline-block;
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+/* ===== HOBBIES & LANGUAGES SECTION ===== */
+.pdf3-two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 8px;
+}
+
+.pdf3-hobbies-list,
+.pdf3-languages-list {
+  margin-top: 8px;
+}
+
+.pdf3-hobby-item {
+  margin-bottom: 8px;
+}
+
+.pdf3-hobby-item strong {
+  display: block;
+  font-size: 13px;
+  color: #2c3e50;
+  margin-bottom: 2px;
+}
+
+.pdf3-hobby-item p {
+  font-size: 12px;
+  color: #666;
+  line-height: 1.4;
+}
+
+.pdf3-language-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px dotted #eee;
+}
+
+.pdf3-language-name {
+  font-size: 13px;
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+.pdf3-language-level {
+  font-size: 12px;
+  color: #7f8c8d;
+  font-style: italic;
+}
+
+/* ===== CUSTOM SECTION ===== */
+.pdf3-custom-links {
+  list-style: none;
+  padding-left: 0;
+}
+
+.pdf3-custom-links li {
+  margin-bottom: 6px;
+}
+
+.pdf3-custom-links a {
+  color: #3498db;
+  text-decoration: none;
+  font-size: 12px;
+  word-break: break-all;
+}
+
+.pdf3-custom-contact div {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 6px;
+}
+
+.pdf3-custom-contact strong {
+  color: #2c3e50;
+  margin-right: 8px;
+}
+
+/* ===== UTILITY CLASSES ===== */
+.pdf3-section {
+   
+  break-inside: avoid;
+  page-break-inside: avoid;
+  
+}
+
+/* ===== PRINT OPTIMIZATION ===== */
+@media print {
+  .pdf-page {
+    padding: 40px 48px;
+  }
+  
+  .pdf3-section h2 {
+    margin: 20px 0 12px 0;
+  }
+  
+  /* Ensure two columns don't break in print */
+  .pdf3-two-column {
+    page-break-inside: avoid;
+  }
+}
+
+

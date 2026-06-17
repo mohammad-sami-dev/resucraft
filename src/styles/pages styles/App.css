@@ -1,0 +1,506 @@
+:root {
+  --navbar-height: 70px;
+  --form-width: 50%;
+  --preview-width: 50%;
+  --gap-size: 20px;
+  --transition-speed: 0.3s;
+  --border-radius: 12px;
+  --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 4px 20px rgba(0, 0, 0, 0.15);
+  --shadow-heavy: 0 8px 30px rgba(0, 0, 0, 0.2);
+  --color-primary: #3b82f6;
+  --color-secondary: #64748b;
+  --color-success: #10b981;
+  --color-danger: #ef4444;
+  --color-background: #f8fafc;
+  --color-surface: #ffffff;
+  --color-border: #e2e8f0;
+  --a4-width: 794px;
+  --a4-height: 1123px;
+  --preview-scale: 1; /* Scale factor for preview */
+}
+
+/* Reset and Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--color-background);
+  color: #1e293b;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Main App Container */
+.cv-builder-app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  position: relative;
+  width: 100%;
+}
+
+/* Main Container Layout - 60/40 split */
+.cv-builder-container {
+  display: flex;
+  flex: 1;
+  gap: var(--gap-size);
+  padding: calc(var(--navbar-height) + 20px) 20px 20px;
+  width:100vw;
+  margin: 0 auto;
+ 
+  min-height: calc(100vh - var(--navbar-height));
+  align-items: stretch;
+  justify-content: center ;
+  
+}
+
+/* Form Container (Left Side - 60%) */
+.cv-builder-form-container {
+  flex: 0 0 var(--form-width);
+  max-width: var(--form-width);
+  background: var(--color-surface);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-medium);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  
+  transition: transform var(--transition-speed) ease;
+  border: 1px solid var(--color-border);
+  position: sticky;
+  top: calc(var(--navbar-height) + 20px);
+  height: calc(100vh - var(--navbar-height) - 25px);
+}
+  
+.cv-builder-form-container.hidden {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.form-wizard-wrapper,
+.edit-style-wrapper {
+  flex: 1;
+  overflow-y: auto;
+ 
+  height: 100%;
+}
+
+/* Preview Container (Right Side - 40%) */
+.cv-builder-preview-container {
+  flex: 0 0 var(--preview-width);
+  min-width: var(--preview-width);
+  max-width: var(--preview-width);
+  background: var(--color-surface);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-medium);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  min-height: calc(100vh - var(--navbar-height) - 40px);
+  overflow-x: hidden;
+}
+
+/* Preview Wrapper - Centers and scales the CV */
+.preview-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}
+
+.cv-builder-preview-container:not(.full-screen) .preview-wrapper {
+  transform-origin: top left;
+  display: flex;
+}
+
+.cv-builder-preview-container.full-screen .preview-wrapper {
+  transform-origin: top center;
+  width: 100%;
+}
+/* Actual CV Preview - Scaled Down */
+.cv-preview-display {
+  transform-origin: top center;
+  min-width: var(--a4-width );
+  max-width: var(--a4-width );
+  transform: scale(var(--preview-scale));
+  background: white;
+  box-shadow: 0 4px 20px rgba(0.15, 0.15, 0.15, 0.15);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+  display: block;
+}
+
+/* When in full-screen mode (preview tab) */
+.cv-builder-preview-container.full-screen {
+  flex: 0 0 100%;
+  max-width: 100%;
+  min-width: 100%;
+  margin-left: 0;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 0;
+}
+
+
+
+.cv-builder-preview-container.full-screen .cv-preview-display {
+  width: 100%;
+  transform-origin: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(1);
+}
+
+/* Preview Actions */
+.preview-actions {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 12px;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 12px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-heavy);
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  white-space: nowrap;
+}
+
+.download-btn {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #2563eb 100%);
+  color: white;
+}
+
+.save-btn {
+  background: linear-gradient(135deg, var(--color-success) 0%, #059669 100%);
+  color: white;
+}
+
+.edit-btn {
+  background: var(--color-surface);
+  color: var(--color-secondary);
+  border: 1px solid var(--color-border);
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-heavy);
+}
+
+.action-btn:active {
+  transform: translateY(0);
+}
+
+.btn-icon {
+  font-size: 16px;
+}
+
+/* PDF Generator (Hidden) */
+.pdf-generator {
+  position: absolute !important;
+  left: -9999px !important;
+  top: 0 !important;
+  width: 210mm !important; /* A4 width */
+  height: 297mm !important; /* A4 height */
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: block !important;
+  z-index: -1 !important;
+}
+
+/* Layout Drawer */
+.layout-slider {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 50;
+}
+
+/* Responsive Design - Tablet */
+@media screen and (max-width: 1400px) {
+  :root {
+    --form-width: 55%;
+    --preview-width: 45%;
+     
+  }
+  
+  .cv-builder-container {
+    padding: calc(var(--navbar-height) + 15px) 15px 15px;
+  }
+
+  .cv-preview-display {
+    transform: scale(0.73);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+
+}
+
+@media screen and (max-width: 1200px) {
+  :root {
+    --form-width: 55%;
+    --preview-width: 45%;
+    --preview-scale: 0.2;
+  }
+}
+
+/* Responsive Design - Mobile (switch to vertical layout) */
+@media screen and (max-width: 1024px) {
+  
+  .cv-builder-container {
+    flex-direction: column;
+    gap: 15px;
+    padding: calc(var(--navbar-height) + 10px) 10px 10px;
+  }
+  
+  /* Both take full width on tablet */
+  .cv-builder-form-container {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 100%;
+    position: static;
+    height: auto;
+    max-height: 50vh;
+    top: auto;
+  }
+  
+  .cv-builder-preview-container {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 100%;
+    min-height: auto;
+    
+  }
+  
+  .cv-builder-preview-container.full-screen {
+    height: calc(100vh - var(--navbar-height) - 20px);
+  }
+  
+  .preview-wrapper {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    
+  }
+  
+  .cv-preview-display {
+    transform: scale(0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .preview-actions {
+    bottom: 10px;
+    right: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .action-btn {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+}
+
+/* Small Mobile Devices */
+@media screen and (max-width: 768px) {
+  :root {
+    --navbar-height: 60px;
+  }
+  
+  .cv-builder-container {
+    padding: calc(var(--navbar-height) + 10px) 10px 10px;
+  }
+  
+  .cv-builder-form-container {
+    min-height: 45vh;
+  }
+  
+  .cv-builder-preview-container {
+    height: auto;
+  }
+  
+  .cv-preview-display {
+    transform: scale(0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .preview-actions {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 0;
+    padding: 10px;
+    justify-content: space-around;
+    background: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+  }
+  
+  .action-btn {
+    flex: 1;
+    justify-content: center;
+    max-width: 120px;
+    padding: 8px 12px;
+  }
+  
+  .btn-icon {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .cv-builder-form-container,
+  .cv-builder-preview-container {
+    border-radius: 8px;
+  }
+  
+  .cv-preview-display {
+    transform: scale(0.45);
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .preview-actions {
+    flex-direction: row;
+  }
+  
+  .action-btn {
+    max-width: 100px;
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+}
+
+/* Loading States */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  color: var(--color-secondary);
+}
+
+.loading::after {
+  content: '';
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--color-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-left: 10px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Empty States */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  text-align: center;
+  color: var(--color-secondary);
+}
+
+.empty-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+/* Smooth Transitions */
+.cv-builder-form-container,
+.cv-builder-preview-container,
+.action-btn,
+.cv-preview-display {
+  transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Focus States */
+.action-btn:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-secondary);
+  border-radius: 4px;
+  opacity: 0.5;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+  opacity: 0.8;
+}
+
+/* Utility Classes */
+.hidden {
+  display: none !important;
+}
+
+.full-width {
+  width: 100vw !important;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-muted {
+  color: var(--color-secondary);
+}

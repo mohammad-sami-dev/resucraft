@@ -1,0 +1,231 @@
+{
+    "generalInfo": {
+        "phone": "7768842486",
+        "location": "Thottapuzhassery, Kerala, IN",
+        "title": "Full Stack Developer"
+    },
+    "summary": {
+        "summary": "Full-Stack Developer with hands-on experience building and deploying MERN applications. Strong focus on React-based UI systems, RESTful APIs, authentication, and client-side PDF generation. Experienced in translating complex UI layouts into production-ready, scalable solutions. Actively seeking full-stack or frontend-heavy roles."
+    },
+    "education": [
+        {
+            "school": "MONTFORT HIGHER SEC SCHOOL",
+            "degree": "SSC",
+            "location": "Kemrith, Bamni, Chandrapur",
+            "startDate": "05 2009",
+            "endDate": "05 2011",
+            "achievements": {
+                "title": "Achievements",
+                "points": []
+            }
+        },
+        {
+            "school": "SRI CHAITYANYA JUNIOR KALASALA",
+            "degree": "HSC",
+            "location": "Ameenpur village, Patancheru mandal, Medak dist.",
+            "startDate": "05 2011",
+            "endDate": "05 2013",
+            "achievements": {
+                "title": "Achievements",
+                "points": []
+            }
+        }
+    ],
+    "experience": [
+        {
+            "position": "SENIOR EXECUTIVE",
+            "company": "HEXAWARE TECHNOLOGIES (FIRST ADVANTAGE)",
+            "location": "Mihan, Nagpur",
+            "startDate": "10 2019",
+            "endDate": "06 2021",
+            "achievements": {
+                "title": "Achievements",
+                "points": []
+            }
+        }
+    ],
+    "skills": [
+        {
+            "skill": "HTML"
+        },
+        {
+            "skill": "CSS"
+        },
+        {
+            "skill": "JAVASCRIPT"
+        },
+        {
+            "skill": "TAILWIND"
+        },
+        {
+            "skill": "REACT"
+        },
+        {
+            "skill": "BOOTSTRAP"
+        },
+        {
+            "skill": "RESPONSIVE DESIGN"
+        },
+        {
+            "skill": "NODE.JS"
+        },
+        {
+            "skill": "EXPRESS.JS"
+        },
+        {
+            "skill": "MONGO-DB"
+        },
+        {
+            "skill": "NETLIFY"
+        },
+        {
+            "skill": "RENDER"
+        },
+        {
+            "skill": "GIT"
+        },
+        {
+            "skill": "GITHUB"
+        },
+        {
+            "skill": "REST APIs"
+        },
+        {
+            "skill": "VITE"
+        },
+        {
+            "skill": "jsPDF"
+        },
+        {
+            "skill": "HTML2CANVAS"
+        },
+        {
+            "skill": "CLOUDINARY"
+        },
+        {
+            "skill": "AXIOS"
+        },
+        {
+            "skill": "JWT"
+        },
+        {
+            "skill": "BCRYPT"
+        }
+    ],
+    "projects": [
+        {
+            "title": "Personal Portfolio Website",
+            "description": "Engineered a high-performance portfolio using React and Vite, achieving fast load times and smooth animations.",
+            "skillsUsed": [
+                "React",
+                "Vite",
+                "Express",
+                "Node.js",
+                "Javascript"
+            ],
+            "keyFeatures": {
+                "title": "Key Features",
+                "points": [
+                    "Implemented a contact form with Nodemailer integration, enabling direct client communication.",
+                    "Deployed with a split-stack architecture (frontend on Netlify, backend on Render) ensuring 99.9% uptime.",
+                    "Optimized for core web vitals and mobile responsiveness, scoring 95+ on lighthouse metrics."
+                ]
+            }
+        },
+        {
+            "title": "ResuCraft - dynamic and responsive CV Builder application",
+            "link": "https://resume-baker.netlify.app",
+            "description": "Designed and built a real-time resume builder with synchronized form input and live CV preview.",
+            "skillsUsed": [
+                "React",
+                "Vite",
+                "jsPDF",
+                "html2canvas"
+            ],
+            "keyFeatures": {
+                "title": "Key Features",
+                "points": [
+                    "Implemented a multi-template layout engine supporting dynamic section visibility and styling.",
+                    "Engineered client-side PDF generation with accurate pagination and print-optimized layouts.",
+                    "Solved complex HTML-to-PDF rendering challenges, ensuring consistent output across templates.",
+                    "Integrated JWT-based authentication with guest and registered user flows."
+                ]
+            }
+        },
+        {
+            "title": "TaskNest - A Full-Stack To-Do Application",
+            "link": "https://todotasknest.netlify.app",
+            "description": "Developed a full stack SPA implementing secure JWT authentication and RESTful API architecture.",
+            "skillsUsed": [
+                "Node.js",
+                "Express",
+                "MongoDB",
+                "Javascript"
+            ],
+            "keyFeatures": {
+                "title": "Key Features",
+                "points": [
+                    "Engineered a dynamic calendar view with date-based task filtering, reducing user task management time.",
+                    "Built comprehensive CRUD with real-time UI updates and responsive design.",
+                    "Utilized MongoDB Atlas for cloud data persistence and deployed with optimized CORS configuration."
+                ]
+            }
+        },
+        {
+            "title": "Affina – Full-Stack social media platform",
+            "link": "https://affina.netlify.app",
+            "description": "Developed a scalable social media application supporting real-time post interactions and media uploads.",
+            "skillsUsed": [
+                "MERN Stack (MongoDB",
+                "Express",
+                "React",
+                "Node.js",
+                "JWT",
+                "Cloudinary",
+                "Tailwind CSS"
+            ],
+            "keyFeatures": {
+                "title": "Key Features",
+                "points": [
+                    "Implemented secure JWT authentication with password hashing and protected API routes.",
+                    "Integrated Cloudinary CDN for optimized image handling, reducing uploading times by 40%.",
+                    "Engineered a responsive UI with React Context API for global state management across components.",
+                    "Built RESTful APIs for post management, likes, comments, and user profiles operations."
+                ]
+            }
+        }
+    ],
+    "languages": [
+        {
+            "language": "ENGLISH",
+            "proficiency": "FLUENT"
+        },
+        {
+            "language": "HINDI",
+            "proficiency": "FLUENT"
+        },
+        {
+            "language": "MALAYALAM",
+            "proficiency": "INTERMEDIATE"
+        },
+        {
+            "language": "MARATHI",
+            "proficiency": "INTERMEDIATE"
+        }
+    ],
+    "hobbies": [
+        {
+            "title": "Writing Poetry",
+            "description": "Enjoy creative writing, expressing thoughts and emotions through poems."
+        },
+        {
+            "title": "Playing Harmonica",
+            "description": "Passionate about music and self-taught in playing the harmonica."
+        },
+        {
+            "title": "Cricket",
+            "description": "Actively participate in cricket."
+        }
+    ],
+    "custom": null
+}

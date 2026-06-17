@@ -1,0 +1,127 @@
+.feedback-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.feedback-backdrop{
+    width: min(600px, 100%);
+}
+
+.feedback-modal {
+  width: min(600px, 100%);
+  max-height: 88vh;
+  overflow-y: auto;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  border: 1px solid #e5e7eb;
+  padding: 18px;
+}
+
+.feedback-title {
+  margin: 0 0 6px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.feedback-subtitle {
+  margin: 0 0 14px;
+  font-size: 0.92rem;
+  color: #64748b;
+}
+
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.feedback-label {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.feedback-input,
+.feedback-select,
+.feedback-textarea {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 0.95rem;
+  color: #0f172a;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.feedback-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.feedback-input:focus,
+.feedback-select:focus,
+.feedback-textarea:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.feedback-actions {
+  margin-top: 4px;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.feedback-btn {
+  border: none;
+  border-radius: 10px;
+  padding: 9px 14px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.feedback-btn.primary {
+  background: #2563eb;
+  color: #fff;
+}
+
+.feedback-btn.primary:hover {
+  background: #1d4ed8;
+}
+
+.feedback-btn.secondary {
+  background: #e2e8f0;
+  color: #1e293b;
+}
+
+.feedback-btn.secondary:hover {
+  background: #cbd5e1;
+}
+
+@media (max-width: 480px) {
+  .feedback-modal {
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .feedback-actions {
+    flex-direction: column-reverse;
+  }
+
+  .feedback-btn {
+    width: 100%;
+  }
+}

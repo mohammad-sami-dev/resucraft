@@ -1,0 +1,474 @@
+/* =========================
+   INTRO PAGE CONTAINER
+========================= */
+
+.intro-page-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.intro-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.intro-progress {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.progress-bar {
+    width: 200px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(to right, #4ade80, #22d3ee);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.skip-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.skip-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.intro-content {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+     height: min-content;
+}
+
+.intro-page {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================
+   WELCOME PAGE (Page 1)
+========================= */
+
+.intro-page-welcome {
+    text-align: center;
+    color: black;
+}
+
+.welcome-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.intro-page-welcome h1 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #272525 0%, #080b0e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(10px);
+}
+
+.check-icon {
+    color: #4ade80;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* =========================
+   FORM & PREVIEW PAGES (Pages 2 & 3)
+========================= */
+
+.intro-page-form,
+.intro-page-preview {
+    color: black;
+}
+
+.intro-page-form h2,
+.intro-page-preview h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+    color: black;
+}
+
+.intro-section {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.intro-image-card {
+    flex: 1;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    transition: 0.7s ease-in;
+}
+
+.image-label {
+    background: #3b82f6;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.intro-image-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+    transition: 0.7s ease-in;
+}
+
+.intro-image-card:hover {
+    transform: scale(1.2);
+}
+ 
+.intro-image-card img:hover {
+    transform: scale(1.2);
+}
+
+.intro-text-card {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.intro-text-card h3 {
+    color: black;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.instruction-item,
+.feature-highlight {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 15px;
+    color: black;
+    line-height: 1.5;
+}
+
+.bullet {
+    background: #3b82f6;
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.highlight-icon {
+    color: #fbbf24;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+/* =========================
+   FINAL PAGE (Page 4)
+========================= */
+
+.intro-page-final {
+    color: black;
+    text-align: center;
+}
+
+.final-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.success-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    animation: bounce 1s ease infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.intro-page-final h1 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.final-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.final-message {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: black;
+}
+
+.cta-buttons {
+    margin-top: 30px;
+}
+
+.register-btn {
+    background: linear-gradient(135deg, #4ade80 0%, #3b82f6 100%);
+    color: white;
+    border: none;
+    padding: 16px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(74, 222, 128, 0.3);
+}
+
+.register-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(74, 222, 128, 0.4);
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.intro-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-btn:not(:disabled):hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.nav-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.next-btn {
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    border: none;
+}
+
+.page-indicators {
+    display: flex;
+    gap: 10px;
+}
+
+.page-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+.page-dot.active {
+    background: white;
+    transform: scale(1.2);
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+@media screen and (max-width: 1024px) {
+    .intro-section {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .intro-image-card,
+    .intro-text-card {
+        width: 100%;
+        max-width: 500px;
+    }
+    
+    .intro-page-welcome h1 {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .intro-header,
+    .intro-navigation {
+        padding: 15px 20px;
+    }
+    
+    .intro-content {
+        padding: 20px;
+    }
+    
+    .intro-page-welcome h1,
+    .intro-page-final h1 {
+        font-size: 1.8rem;
+    }
+    
+    .intro-page-form h2,
+    .intro-page-preview h2 {
+        font-size: 1.5rem;
+    }
+    
+    .progress-bar {
+        width: 150px;
+    }
+    
+    .nav-btn {
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .intro-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+    
+    .intro-progress {
+        justify-content: center;
+    }
+    
+    .skip-btn {
+        align-self: center;
+    }
+    
+    .intro-navigation {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .nav-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .page-indicators {
+        order: -1;
+    }
+}

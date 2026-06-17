@@ -1,0 +1,257 @@
+.form-wizard *,
+.form-section * {
+  box-sizing: border-box;
+}
+
+
+
+.form-wizard {
+  height: 100%;
+  width: 100%;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+}
+  
+/* Main two-column layout */
+.wizard-main {
+  display: flex;
+  flex: 1;
+  min-height: 0;        /* IMPORTANT for scrolling */
+  background: white;
+
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  overflow: hidden;    /* prevent children leaking */
+}
+
+
+/* Milestone bar - fixed height independent of content */
+.milestone-bar {
+  width: 30px;
+ margin-right: 10px;
+ margin-left: 10px;
+  margin-top: 26px;
+  margin-bottom: 26px;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Vertical line container */
+.milestone-line-container {
+  position: relative;
+  flex: 1;
+  width: 2px;
+  background: #e2e8f0;
+  border-radius: 1px;
+  overflow: visible;
+  min-height: 400px; /* Minimum height */
+  margin-left: 10px;
+}
+
+.milestone-line-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0; /* Will be set by JS */
+  background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+  transition: height 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border-radius: 1px;
+}
+
+/* Dots positioned absolutely within the container */
+.milestone-dot {
+  position: absolute;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #cbd5e1;
+  transform: translate(-50%, -50%);
+  transition: all 0.35s ease;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Completed steps */
+.milestone-dot.done {
+  background: #10b981;
+  border-color: #10b981;
+}
+
+/* Active step grows into percentage badge */
+.milestone-dot.active {
+  width: 42px;
+  height: 42px;
+  background: #3b82f6;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.15);
+}
+
+/* The percentage inside the active dot */
+.milestone-dot-percent {
+  font-size: 12px;
+  font-weight: 700;
+  color: white;
+  pointer-events: none;
+  user-select: none;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(59, 130, 246, 0.1);
+  }
+}
+
+/* Percentage Display */
+
+  
+/* Wizard Body - scrolls independently */
+.wizard-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  min-height: 0;
+}
+
+/* Professional Navigation */
+.wizard-nav {
+  position: sticky;
+  bottom: 0;
+  background: white;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #e2e8f0;
+  z-index: 10;
+  width: 100%;
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.95);
+  flex-shrink: 0; /* Prevent nav from shrinking */
+  padding: 5px;
+}
+
+.wizard-nav button {
+  padding: 6px 16px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 120px;
+  background: #3b82f6;
+  color: white;
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.25);
+}
+
+.wizard-nav button:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.wizard-nav button:first-child:not(:disabled) {
+  background: white;
+  color: #64748b;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.wizard-nav button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+}
+
+.wizard-nav button:first-child:hover:not(:disabled) {
+  background: #f8fafc;
+  box-shadow: 0 4px 12px rgba(0, 0, 0.8, 0.08);
+}
+
+.wizard-nav button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+@media screen and (max-width: 900px) {
+.wizard-main {
+    flex-direction: column;
+}
+
+.milestone-bar {
+    display: flex;
+    width: 100%;
+    margin: 8px 0 0;
+    padding: 0 12px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15px;
+  }
+
+.milestone-line-container {
+    width: 100%;
+    min-height: 2px;
+    height: 2px;
+    margin: 0;
+  }
+
+.milestone-dot {
+    width: 16px;
+    height: 16px;
+    background-color: #3b82f6;
+  }
+
+.milestone-dot-percent {
+  font-size: 9px;
+  font-weight: 700;
+  color: white;
+  pointer-events: none;
+  user-select: none;
+}
+  .milestone-dot.active {
+    width: 26px;
+    height: 26px;
+    background-color: #3b82f6;
+  }
+
+  .wizard-body {
+    padding: 12px;
+  }
+
+  .wizard-nav {
+    position: sticky;
+    bottom: 0;
+  }
+
+  .wizard-nav button {
+    min-width: 0;
+    flex: 1;
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+  .milestone-line-fill{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0; /* Will be set by JS */
+    background: linear-gradient(to right, #3b82f6, #8b5cf6);
+    transition: height 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border-radius: 1px;
+  }
+  .form-wizard{
+    display: flex;
+    justify-content: space-between;
+  }
+}

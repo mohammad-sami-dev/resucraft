@@ -1,0 +1,45 @@
+.auth-footer-global {
+  background: #1e293b;
+  color: white;
+  padding: 20px 40px;
+  text-align: center;
+}
+
+.auth-footer-global p {
+  margin: 0 0 10px 0;
+  color: #94a3b8;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.footer-links a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.footer-links button {
+  background: none;
+  border: none;
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+}
+
+.footer-links button:hover {
+  color: white;
+  text-decoration: underline;
+}
