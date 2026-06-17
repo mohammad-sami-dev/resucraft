@@ -103,6 +103,8 @@ const AuthPage = ({ setGlobalLoading }) => {
   };
 
   const handleGuestAccess = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
     navigate('/builder');
   };
 

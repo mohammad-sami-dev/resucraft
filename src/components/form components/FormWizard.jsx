@@ -93,8 +93,6 @@ const FormWizard = ({
 
             </div>
 
-const FormWizard = ({
-...
             {/* Fixed navigation */}
             <div className="wizard-nav">
                 <button disabled={step === 0} onClick={prev} className="btn-secondary">
