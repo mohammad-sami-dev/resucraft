@@ -354,17 +354,20 @@ const CvBuilder = ({ setGlobalLoading }) => {
     }
   }, []);
 
+  const [saveError, setSaveError] = useState(null);
+
   const saveCvToBackend = useCallback(async () => {
     if (!formData || !currentLayout) {
-      alert('Please complete all required fields');
+      setSaveError('Please complete all required fields');
       return;
     }
 
+    setSaveError(null);
     setIsSaving(true);
     try {
       const token = localStorage.getItem('token');
       if (!token) {
-        alert('Please login to save CV');
+        setSaveError('Please login to save CV');
         setIsSaving(false);
         return;
       }
@@ -376,25 +379,20 @@ const CvBuilder = ({ setGlobalLoading }) => {
         layout: currentLayout,
         customStyles,
         visibleSections,
-        // sectionOrder,
         thumbnail
       };
 
       if (cvId) {
-        // Update existing CV
         await API.put(`/api/cv/${cvId}`, payload);
-        alert('CV updated successfully!');
       } else {
-        // Create new CV
         const res = await API.post('/api/cv/create', payload);
-        alert('New CV saved successfully!');
         navigate(`/builder?id=${res.data._id}`);
       }
 
       setShowSaveDialog(false);
     } catch (err) {
-      console.error('Error saving CV:', err.response?.data || err.message);
-      alert('Failed to save CV. Please try again.');
+      console.error('Save CV error:', err.response?.data || err.message);
+      setSaveError(err.response?.data?.message || 'Failed to save CV. Please try again.');
     } finally {
       setIsSaving(false);
     }
@@ -658,7 +656,12 @@ const CvBuilder = ({ setGlobalLoading }) => {
           cvName={cvName}
           setCvName={setCvName}
           onSave={saveCvToBackend}
-          onClose={() => setShowSaveDialog(false)}
+          onClose={() => {
+            setShowSaveDialog(false);
+            setSaveError(null);
+          }}
+          isSaving={isSaving}
+          error={saveError}
         />
       )}
 

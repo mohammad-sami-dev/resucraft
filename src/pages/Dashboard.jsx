@@ -6,6 +6,7 @@ import '../styles/pages styles/dashboard.css';
 import DashboardNavbar from '../components/navbar components/DashboardNavbar.jsx';
 import AppFooter from '../components/common/AppFooter.jsx';
 import Feedback from '../components/feedback/Feedback.jsx';
+import ContactUsModal from '../components/common/ContactUsModal.jsx';
 
 import { 
   Pencil, 
@@ -17,6 +18,7 @@ import {
   Eye,
   MoreHorizontal
 } from 'lucide-react';
+import { FiPlus } from 'react-icons/fi';
 
 const Dashboard = ({setGlobalLoading}) => {
     const [cvs, setCvs] = useState([]);
@@ -24,6 +26,7 @@ const Dashboard = ({setGlobalLoading}) => {
     const [loading, setLoading] = useState(true);
     const [message, setMessage] = useState(''); // Added this line
     const [showFeedback, setShowFeedback] = useState(false);
+    const [showContact, setShowContact] = useState(false);
 
     const [stats, setStats] = useState({
         total: 0,
@@ -326,8 +329,9 @@ const Dashboard = ({setGlobalLoading}) => {
                     {message}
                 </div>
             )}
-            <AppFooter onFeedbackClick={() => setShowFeedback(true)}/>
+            <AppFooter onFeedbackClick={() => setShowFeedback(true)} onContactClick={() => setShowContact(true)}/>
             <Feedback open={showFeedback} onClose={() => setShowFeedback(false)} />
+            <ContactUsModal open={showContact} onClose={() => setShowContact(false)} />
 
         </div>
     );

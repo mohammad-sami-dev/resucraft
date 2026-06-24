@@ -4,14 +4,16 @@ import '../styles/pages styles/AuthPage.css';
 import '../styles/pages styles/IntroStyles.css'
 import IntroPages from './Intropages.jsx';
 import API from "../api.js";
-import ResuCraftLogo from '../components/navbar components/ResuCraftLogo.jsx';
+
 import AppFooter from "../components/common/AppFooter.jsx"
 import Feedback from '../components/feedback/Feedback.jsx';
+import ContactUsModal from '../components/common/ContactUsModal.jsx';
+import ResuCraftLogo from '../components/navbar components/ResuCraftLogo.jsx';
 import { uploadResume } from "../services/resumeUpload.service.js"
 
 import { X, Rocket, Eye, EyeOff, User, Save, RefreshCw, TrendingUp, Palette, LogIn } from 'lucide-react';
 
-const AuthPage = ({ setGlobalLoading }) => {
+const AuthPage = ({ setGlobalLoading, darkMode, setDarkMode }) => {
   const [isLogin, setIsLogin] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -19,10 +21,13 @@ const AuthPage = ({ setGlobalLoading }) => {
   const [message, setMessage] = useState('');
   const [username, setUsername] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [showIntro, setShowIntro] = useState(false);
+  const [showIntro, setShowIntro] = useState(true);
   const [errors, setErrors] = useState({});
   const [cvDownloads, setCvDownloads] = useState(0);
   const [showFeedback, setShowFeedback] = useState(false);
+  const [showContact, setShowContact] = useState(false);
+
+  const safeCvDownloads = typeof cvDownloads === 'number' ? cvDownloads : Number(cvDownloads) || 0;
 
   useEffect(() => {
 
@@ -84,7 +89,8 @@ const AuthPage = ({ setGlobalLoading }) => {
 
     try {
       const endpoint = isLogin ? '/api/auth/login' : '/api/auth/register';
-      const { data } = await API.post(endpoint, { email, password, username });
+      const normalizedEmail = email.trim().toLowerCase();
+      const { data } = await API.post(endpoint, { email: normalizedEmail, password, username });
 
       localStorage.setItem('token', data.token);
       localStorage.setItem('username', data.user.username);
@@ -116,24 +122,26 @@ const AuthPage = ({ setGlobalLoading }) => {
     setShowIntro(true);
   };
 
-  const logosize = window.innerWidth <= 480 ? 36 : 40;
-
   return (
-    <div className={`auth-page ${!showIntro ? 'intro-closed' : ''}`}>
+    <div
+      className={`auth-page ${!showIntro ? 'intro-closed' : ''}`}
+      style={{ paddingTop: '90px', boxSizing: 'border-box' }}
+    >
 
-      {/* Header with branding */}
-      <header className='auth-header'>
-        <div className='header-content'>
-          <ResuCraftLogo size={logosize} />
-          <p className='tagline'>Create professional resumes in minutes</p>
+      <header
+        className="auth-header"
+        style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000 }}
+      >
+        <div className="brand-block">
+          <div className="brand-mark">
+            <ResuCraftLogo size={72} />
+          </div>
         </div>
-        <div className='header-buttons'>
 
-          {!showIntro && (
-            <button className='intro-toggle' onClick={showIntroAgain}>
-              Show Tutorial
-            </button>
-          )}
+        <div className="header-actions">
+          <button className="ghost-btn" onClick={showIntroAgain}>
+            Show Tutorial
+          </button>
         </div>
       </header>
 
@@ -141,7 +149,7 @@ const AuthPage = ({ setGlobalLoading }) => {
         {/* Left Panel - Introduction/Tutorial */}
 
         {showIntro && (
-          <div className='intro-panel'>
+          <div className='intro-panel full-screen'>
             <div className='intro-header'>
               <h2>Getting Started</h2>
               <button className='close-intro' onClick={handleIntroFinish}>
@@ -163,189 +171,162 @@ const AuthPage = ({ setGlobalLoading }) => {
         )}
 
         {/* Right Panel - Authentication Form */}
-        <div className={`auth-panel ${!showIntro ? 'centered' : ''}`}>
-
-          <div className='auth-card'>
-
-            <div className='card-header'>
-              <div className='download-counter'>
-                Created {String(cvDownloads).padStart(2, "0")} CVs.
-              </div>
-              <h2>{isLogin ? 'Welcome Back' : 'Create Your Account'}</h2>
-              <p>
-                {isLogin
-                  ? 'Sign in to access your saved resumes'
-                  : 'Build and customize your resume quickly with flexible templates'
-                }
-              </p>
-            </div>
-            <div className="import-resume-box">
-              <label className="import-resume-btn">
-                <Rocket size={18} /> Upload Resume — Get a Professional Version in Seconds
-                <small>No signup required (Guest mode)</small>
-
-                <input
-                  type="file"
-                  accept=".pdf"
-                  hidden
-                  onChange={async (e) => {
-                    const file = e.target.files[0];
-                    if (!file) return;
-                    const result = await uploadResume(file, navigate, setGlobalLoading);
-                    if (!result.success) {
-                      alert(result.message); // or set local toast/message state
-                    }
-                  }}
-                />
-              </label>
-
-              <div className="import-divider">
-                <span>or build manually</span>
-              </div>
-            </div>
-            <div className='form-switcher'>
-              <button
-                className={`switch-btn ${isLogin ? 'active' : ''}`}
-                onClick={() => setIsLogin(true)}
-              >
-                Login
-              </button>
-              <button
-                className={`switch-btn ${!isLogin ? 'active' : ''}`}
-                onClick={() => setIsLogin(false)}
-              >
-                Register
-              </button>
-            </div>
-
-            <form onSubmit={handleSubmit} className='auth-form'>
-              <div className='input-group'>
-                <label htmlFor='email'>Email Address</label>
-                <input
-                  id='email'
-                  type='email'
-                  placeholder='you@example.com'
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className={errors.email ? 'error' : ''}
-                />
-                {errors.email && <span className='error-msg'>{errors.email}</span>}
-              </div>
-
-              {!isLogin && (
-                <div className='input-group'>
-                  <label htmlFor='username'>Username</label>
-                  <input
-                    id='username'
-                    type='text'
-                    placeholder='Choose a username'
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    className={errors.username ? 'error' : ''}
-                  />
-                  {errors.username && <span className='error-msg'>{errors.username}</span>}
-                </div>
-              )}
-
-              <div className='input-group'>
-                <label htmlFor='password'>Password</label>
-                <div className='password-field'>
-                  <input
-                    id='password'
-                    type={showPassword ? "text" : "password"}
-                    placeholder={isLogin ? 'Enter your password' : 'Create a secure password'}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className={errors.password ? 'error' : ''}
-                  />
-                  <button
-                    type='button'
-                    className='password-toggle'
-                    onClick={() => setShowPassword((v) => !v)}
-                    aria-label={showPassword ? 'Hide password' : 'Show password'}
-                    aria-pressed={showPassword}
-                  >
-                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-                  </button>
-                </div>
-                {errors.password && <span className='error-msg'>{errors.password}</span>}
-              </div>
-
-              {isLogin && (
-                <div className='form-options'>
-                  <label className='checkbox-label'>
-                    <input type='checkbox' /> Remember me
-                  </label>
-                  <a href='#forgot' className='forgot-link'>Forgot password?</a>
-                </div>
-              )}
-
-              {message && (
-                <div className={`message ${message.includes('success') ? 'success' : 'error'}`}>
-                  {message}
-                </div>
-              )}
-
-              <button
-                type='submit'
-                className='primary-btn'
-                disabled={isLoading}
-              >
-                {isLoading ? (
-                  <>
-                    <span className='spinner'></span>
-                    {isLogin ? 'Signing in...' : 'Creating account...'}
-                  </>
-                ) : (
-                  isLogin ? 'Sign In' : 'Create Account'
-                )}
-              </button>
-
-              <div className='divider'>
-                <span>or continue with</span>
-              </div>
-
-              <button
-                type='button'
-                className='guest-btn'
-                onClick={handleGuestAccess}
-              >
-                <span className='guest-icon'><User size={18} /></span>
-                Continue as Guest
-                <small>Try without registration</small>
-              </button>
-
-              <div className='auth-footer'>
+        {!showIntro && (
+          <div className={`auth-panel ${!showIntro ? 'centered' : ''}`}>
+            <div className='auth-card'>
+              <div className='card-header'>
+                <h2>{isLogin ? 'Welcome Back' : 'Create Your Account'}</h2>
                 <p>
-                  {isLogin ? "Don't have an account? " : "Already have an account? "}
-                  <button type='button' className='link-btn' onClick={toggleForm}>
-                    {isLogin ? 'Sign up' : 'Sign in'}
-                  </button>
+                  {isLogin
+                    ? 'Sign in to access your saved resumes'
+                    : 'Build and customize your resume quickly with flexible templates'
+                  }
                 </p>
               </div>
-            </form>
+              <div className='form-switcher'>
+                <button
+                  className={`switch-btn ${isLogin ? 'active' : ''}`}
+                  onClick={() => setIsLogin(true)}
+                >
+                  Login
+                </button>
+                <button
+                  className={`switch-btn ${!isLogin ? 'active' : ''}`}
+                  onClick={() => setIsLogin(false)}
+                >
+                  Register
+                </button>
+              </div>
 
-            <div className='benefits'>
-              <h3>Why Register?</h3>
-              <ul>
-                <li><Save size={16} /> Save multiple resume versions</li>
-                <li><RefreshCw size={16} /> Access from any device</li>
-                <li><TrendingUp size={16} /> Track your applications</li>
-                <li><Palette size={16} /> Exclusive templates</li>
-              </ul>
+              <form onSubmit={handleSubmit} className='auth-form'>
+                <div className='input-group'>
+                  <label htmlFor='email'>Email Address</label>
+                  <input
+                    id='email'
+                    type='email'
+                    placeholder='you@example.com'
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className={errors.email ? 'error' : ''}
+                  />
+                  {errors.email && <span className='error-msg'>{errors.email}</span>}
+                </div>
+
+                {!isLogin && (
+                  <div className='input-group'>
+                    <label htmlFor='username'>Username</label>
+                    <input
+                      id='username'
+                      type='text'
+                      placeholder='Choose a username'
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
+                      className={errors.username ? 'error' : ''}
+                    />
+                    {errors.username && <span className='error-msg'>{errors.username}</span>}
+                  </div>
+                )}
+
+                <div className='input-group'>
+                  <label htmlFor='password'>Password</label>
+                  <div className='password-field'>
+                    <input
+                      id='password'
+                      type={showPassword ? "text" : "password"}
+                      placeholder={isLogin ? 'Enter your password' : 'Create a secure password'}
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      className={errors.password ? 'error' : ''}
+                    />
+                    <button
+                      type='button'
+                      className='password-toggle'
+                      onClick={() => setShowPassword((v) => !v)}
+                      aria-label={showPassword ? 'Hide password' : 'Show password'}
+                      aria-pressed={showPassword}
+                    >
+                      {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                    </button>
+                  </div>
+                  {errors.password && <span className='error-msg'>{errors.password}</span>}
+                </div>
+
+                {isLogin && (
+                  <div className='form-options'>
+                    <label className='checkbox-label'>
+                      <input type='checkbox' /> Remember me
+                    </label>
+                    <a href='#forgot' className='forgot-link'>Forgot password?</a>
+                  </div>
+                )}
+
+                {message && (
+                  <div className={`message ${message.includes('success') ? 'success' : 'error'}`}>
+                    {message}
+                  </div>
+                )}
+
+                <button
+                  type='submit'
+                  className='primary-btn'
+                  disabled={isLoading}
+                >
+                  {isLoading ? (
+                    <>
+                      <span className='spinner'></span>
+                      {isLogin ? 'Signing in...' : 'Creating account...'}
+                    </>
+                  ) : (
+                    isLogin ? 'Sign In' : 'Create Account'
+                  )}
+                </button>
+
+                <div className='divider'>
+                  <span>or continue with</span>
+                </div>
+
+                <button
+                  type='button'
+                  className='guest-btn'
+                  onClick={handleGuestAccess}
+                >
+                  <span className='guest-icon'><User size={18} /></span>
+                  Continue as Guest
+                  <small>Try without registration</small>
+                </button>
+
+                <div className='auth-footer'>
+                  <p>
+                    {isLogin ? "Don't have an account? " : "Already have an account? "}
+                    <button type='button' className='link-btn' onClick={toggleForm}>
+                      {isLogin ? 'Sign up' : 'Sign in'}
+                    </button>
+                  </p>
+                </div>
+              </form>
+
+              <div className='benefits'>
+                <h3>Why Register?</h3>
+                <ul>
+                  <li><Save size={16} /> Save multiple resume versions</li>
+                  <li><RefreshCw size={16} /> Access from any device</li>
+                  <li><TrendingUp size={16} /> Track your applications</li>
+                  <li><Palette size={16} /> Exclusive templates</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className='testimonial'>
+              <h4>Guest mode available</h4>
+              <p>Resumes are not stored unless you create an account and choose to save them.</p>
             </div>
           </div>
-
-          <div className='testimonial'>
-            <h4>Guest mode available</h4>
-            <p>Resumes are not stored unless you create an account and choose to save them.</p>
-
-          </div>
-        </div>
+        )}
       </div>
 
-      <AppFooter onFeedbackClick={() => setShowFeedback(true)} />
+      <AppFooter onFeedbackClick={() => setShowFeedback(true)} onContactClick={() => setShowContact(true)} />
       <Feedback open={showFeedback} onClose={() => setShowFeedback(false)} />
+      <ContactUsModal open={showContact} onClose={() => setShowContact(false)} />
     </div>
   );
 };

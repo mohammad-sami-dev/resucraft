@@ -27,19 +27,3 @@
   color: white;
   text-decoration: underline;
 }
-
-.footer-links button {
-  background: none;
-  border: none;
-  color: #cbd5e1;
-  text-decoration: none;
-  font-size: 0.9rem;
-  cursor: pointer;
-  padding: 0;
-  font-family: inherit;
-}
-
-.footer-links button:hover {
-  color: white;
-  text-decoration: underline;
-}

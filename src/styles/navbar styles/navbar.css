@@ -1,160 +1,127 @@
-.nav-control {
+.nav-control,
+.back-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 120px;
-  min-height: 38px;   /* add */
-  padding: 0 12px;    /* add */
-  border-radius: 6px;
+  min-height: 42px;
+  padding: 0 14px;
+  border-radius: 999px;
   cursor: pointer;
   user-select: none;
   font: inherit;
   font-weight: 600;
   white-space: nowrap;
-  background-color: #3b82f6;
+  background: rgba(255, 255, 255, 0.08);
   color: #fff;
-  box-shadow:
-    0 2px 4px rgba(0,0,0,0.25),
-    0 6px 12px rgba(0,0,0,0.15);
-  transition: box-shadow .2s ease, transform .15s ease, background-color .2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: none;
+  transition: all 0.2s ease;
 }
 
-.nav-control:hover {
+.nav-control:hover,
+.back-btn:hover {
   transform: translateY(-1px);
-  box-shadow:
-    0 4px 8px rgba(0,0,0,0.35),
-    0 10px 18px rgba(0,0,0,0.2);
-  background-color: #2563eb;
-  
-}
-
-.nav-control:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-}
-
-
-.cv-navbar {
-    display: flex;
-    background-color: aqua  ;
-    height: 65px;
-    justify-content: space-between;
-    position: fixed;
-    width: 100vw;
-    z-index: 1200;
-}
-.cv-navbar button {
-   background: #464242;
+  background: linear-gradient(135deg, #60a5fa 0%, #4f46e5 100%);
+  box-shadow: 0 8px 18px rgba(59, 130, 246, 0.22);
   color: #ffffff;
 }
-.userinfo-navbar {
-    min-width: 16vw;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    background: #3b82f6;;
-    color: #ffffff;
-    border-radius: 10px;
-    
-    margin:5px ;
-    
-     
-    
-    padding-right: 15px;
-    padding-left: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-.userinfo-navbar h2{
-    width: 100%;
-    font-size: 1.4rem;
-    font-weight: bolder;
-    text-align: left;
-    
-}
- 
-.userinfo-btn-navbar{
-    width: 70vw;
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    align-items: center ;
-    justify-content: space-around;
-  
-}
-.userinfo-btn-navbar button {
-    background-color: #3b82f6;
-    align-self:center ;
-    font-weight: 600;
-    box-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.25),
-    0 6px 12px rgba(0, 0, 0, 0.15);
-    transition:
-    box-shadow 0.2s ease,
-    transform 0.15s ease,
-    background-color 0.2s ease;
-}
-.userinfo-btn-navbar .nav-control{
-  background-color: #3b82f6;
-    align-self:center ;
-    
-    font-weight: 600;
-    box-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.25),
-    0 6px 12px rgba(0, 0, 0, 0.15);
 
-    transition:
-    box-shadow 0.2s ease,
-    transform 0.15s ease,
-    background-color 0.2s ease;
-}
-.userinfo-btn-navbar button:hover {
-  transform: translateY(-1px);
-  box-shadow:
-    0 4px 8px rgba(0, 0, 0, 0.35),
-    0 10px 18px rgba(0, 0, 0, 0.2);
-    background-color: #2563eb;
-}
-.userinfo-btn-navbar button:active {
+.nav-control:active,
+.back-btn:active {
   transform: translateY(0);
-  box-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.cv-navbar {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #0f172a 0%, #312e81 45%, #4f46e5 100%);
+  backdrop-filter: blur(16px);
+  min-height: 64px;
+  height: auto;
+  justify-content: space-between;
+  position: fixed;
+  inset: 0 0 auto 0;
+  width: 100%;
+  z-index: 2000;
+  padding: 0 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.16);
+  overflow: visible;
+}
+
+.userinfo-navbar {
+  min-width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  color: #ffffff;
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  min-height: 64px;
+}
+
+.userinfo-navbar .resucraft-logo {
+  height: 120px;
+  width: auto;
+  min-width: 220px;
+  object-fit: contain;
+}
+
+.userinfo-navbar h2 {
+  width: 100%;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-align: left;
+  margin: 0;
+}
+
+.userinfo-btn-navbar {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+  margin-left: 12px;
+}
+
+.userinfo-btn-navbar button {
+  align-self: center;
+  font-weight: 600;
+  box-shadow: none;
 }
 
 .locked-btn-wrapper {
   position: relative;
-  
-  
   display: inline-flex;
   box-sizing: border-box;
-  
 }
-.userinfo-btn-navbar > button,
-.userinfo-btn-navbar > .locked-btn-wrapper {
-  width: auto;
-}
+
 .locked-btn {
-  opacity: 0.9;
+  opacity: 0.95;
   pointer-events: none;
   cursor: not-allowed;
- min-width: 100%;
-  display: block;
-  box-sizing: border-box;
-  height: 38px;
+  min-width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #3b82f6;
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 999px;
 }
-
 
 .lock-icon {
   position: absolute;
   top: 4px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 17px;
-  background-color: transparent;
+  font-size: 16px;
+  background: transparent;
   padding: 2px 6px;
   border-radius: 50%;
   pointer-events: none;
@@ -166,11 +133,11 @@
   bottom: -28px;
   left: 50%;
   transform: translateX(-50%);
-  background: #222;
+  background: #111827;
   color: #fff;
-  font-size: 16px;
+  font-size: 12px;
   padding: 4px 8px;
-  border-radius: 4px;
+  border-radius: 6px;
   white-space: nowrap;
   opacity: 0;
   pointer-events: none;
@@ -181,40 +148,52 @@
   opacity: 1;
 }
 
-
-
 .mobile-menu-toggle {
   display: none;
+  position: relative;
+  z-index: 2001;
+  pointer-events: auto;
+  touch-action: manipulation;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .mobile-menu-toggle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 36px;
+    min-height: 44px;
     padding: 0 12px;
     border: none;
-    border-radius: 8px;
-    background: #1f2937;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.08);
     color: #fff;
     font-weight: 600;
+    position: relative;
+    z-index: 2002;
   }
 
   .userinfo-btn-navbar {
     position: absolute;
-    top: 60px;
+    top: 68px;
     right: 8px;
     left: 8px;
     display: none;
     flex-direction: column;
     gap: 8px;
     padding: 10px;
-    background: #fff;
+    background: rgba(255,255,255,0.97);
     border: 1px solid #e5e7eb;
-    border-radius: 10px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.16);
-    z-index: 1400;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(15,23,42,0.14);
+    z-index: 2100;
+  }
+
+  .userinfo-btn-navbar button,
+  .userinfo-btn-navbar .nav-control,
+  .userinfo-btn-navbar .locked-btn-wrapper,
+  .userinfo-btn-navbar label {
+    min-height: 44px;
+    padding: 10px 12px;
   }
 
   .userinfo-btn-navbar.open {
@@ -228,76 +207,42 @@
     justify-content: center;
   }
 
-
-
- 
   .cv-navbar {
-  width: 100%;
-  left: 0;
-  right: 0;
+    width: 100%;
+    left: 0;
+    right: 0;
+    padding: 0 14px;
+    min-height: 60px;
+  }
+
+  .userinfo-navbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .userinfo-navbar .resucraft-logo {
+    height: 88px;
+    min-width: 140px;
+  }
 }
 
-#builder-mobile-actions.userinfo-btn-navbar {
-  position: absolute;
-  top: 60px;
-  left: 0;
-  right: 0;
-  width: 100%;
-  max-width: 100%;
-  margin: 0;
-  padding: 12px;
-  display: none;
-  flex-direction: column;
-  gap: 10px;
-  background: #fff;
-  border-top: 1px solid #e5e7eb;
-  border-radius: 0;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.16);
-  z-index: 1400;
-}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .cv-navbar {
+    padding: 0 18px;
+  }
 
-#builder-mobile-actions.userinfo-btn-navbar.open {
-  display: flex;
-}
-
-#builder-mobile-actions.userinfo-btn-navbar > button,
-#builder-mobile-actions.userinfo-btn-navbar > .nav-control,
-#builder-mobile-actions.userinfo-btn-navbar > .locked-btn-wrapper,
-#builder-mobile-actions.userinfo-btn-navbar > .nav-control {
-  width: 100%;
-  min-width: 100%;
-  margin: 0;
-  justify-content: center;
-}
-.lock-icon {
-  position: absolute;
-  top: 5px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 17px;
-  background-color:transparent;
-  padding: 2px 6px;
-  border-radius: 50%;
-  pointer-events: none;
-  opacity: 0.8;
-}
-.userinfo-navbar{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.cv-navbar{
-  display: flex;
-  justify-content: space-between;
-}
+  .userinfo-navbar .resucraft-logo {
+    height: 100px;
+    min-width: 180px;
+  }
 }
 
 @media (min-width: 900px) and (max-width: 1115px) {
   .userinfo-btn-navbar {
-    
-    font-size: .8rem;
+    font-size: 0.8rem;
   }
   .userinfo-navbar h2 {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 }

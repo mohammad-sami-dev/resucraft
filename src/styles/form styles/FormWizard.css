@@ -183,7 +183,7 @@
   transform: translateY(0);
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 768px) {
 .wizard-main {
     flex-direction: column;
 }
@@ -239,6 +239,7 @@
     flex: 1;
     font-size: 13px;
     padding: 8px 10px;
+    min-height: 44px;
   }
   .milestone-line-fill{
     position: absolute;

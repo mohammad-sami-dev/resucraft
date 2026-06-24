@@ -41,6 +41,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .ResuCraft-container {
@@ -51,6 +52,8 @@ body {
   max-width: 1600px;
   margin: 0 auto;
   width: 100%;
+  height: calc(100vh - 80px);
+  overflow: hidden;
 }
 
 .ResuCraft-form-container {
@@ -59,10 +62,8 @@ body {
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
   border: 1px solid var(--color-border);
-  height: calc(100vh - var(--navbar-height) - 48px);
-  position: sticky;
-  top: calc(var(--navbar-height) + 24px);
-  overflow: hidden;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
 }
@@ -76,8 +77,8 @@ body {
   display: flex;
   flex-direction: column;
   position: relative;
-  overflow: hidden;
-  min-height: calc(100vh - var(--navbar-height) - 48px);
+  overflow-y: auto;
+  max-height: calc(100vh - 80px);
 }
 
 .preview-wrapper {
@@ -152,15 +153,53 @@ button {
 }
 
 /* Responsive */
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   .ResuCraft-container {
     flex-direction: column;
+    gap: 16px;
+    padding: calc(var(--navbar-height) + 16px) 12px 16px;
   }
+
   .ResuCraft-form-container,
   .ResuCraft-preview-container {
     flex: 0 0 auto;
     width: 100%;
+    min-width: 0;
     position: static;
-    height: auto;
+    max-height: 50vh;
+    overflow-y: auto;
+  }
+
+  .preview-wrapper {
+    padding: 12px;
+  }
+
+  .btn-primary,
+  button {
+    min-height: 44px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .ResuCraft-container {
+    flex-direction: column;
+    gap: 20px;
+    padding: calc(var(--navbar-height) + 20px) 20px 20px;
+  }
+
+  .ResuCraft-form-container,
+  .ResuCraft-preview-container {
+    flex: 0 0 auto;
+    width: 100%;
+    min-width: 0;
+    position: static;
+    max-height: 50vh;
+    overflow-y: auto;
+  }
+}
+
+@media (min-width: 1025px) {
+  .ResuCraft-container {
+    flex-direction: row;
   }
 }

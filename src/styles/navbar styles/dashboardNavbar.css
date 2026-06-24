@@ -1,225 +1,177 @@
-.logo {
-  width: 40px;
-  height: 40px;
-  margin-right: 10px;
-}
-
-nav {
+.logo-container {
   display: flex;
   align-items: center;
-  padding: 10px;
+  justify-content: flex-start;
+  min-width: 220px;
 }
 
-nav span {
-  font-size: 24px;
-  font-weight: bold;
-  color: #1F2937;
+.db-navbar .resucraft-logo {
+  height: 120px;
+  width: auto;
+  object-fit: contain;
 }
-
 
 .db-navbar {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    background-color: aqua;
-    position: fixed;
-    z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, #0f172a 0%, #312e81 45%, #4f46e5 100%);
+  backdrop-filter: blur(16px);
+  position: fixed;
+  z-index: 2000;
+  min-height: 64px;
+  padding: 0 24px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.16);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  overflow: visible;
 }
-.dashboard-info{
-    display: flex;
-    justify-content: space-around;
-    
-    padding-left: 15px;
-    padding-right: 15px;
-   
-    background: #3b82f6;
-    
-    border-radius:10px ;
-    
-    
-    margin:5px ;
-    
-}
-.dashboard-info h2{
-    font-size: 1.4rem;
-    color: #ffffff;
-}
+
 .dashboard-buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    padding-right: 12px;
-    width: 65%;;
-} 
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  padding-right: 4px;
+}
+
 .dashboard-buttons button,
 .dashboard-buttons .nav-upload {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 38px;
-  padding: 0 12px;
-  margin: 0 10px;
-  min-width: 140px;
-  border-radius: 6px;
+  min-height: 42px;
+  padding: 0 14px;
+  border-radius: 999px;
   cursor: pointer;
-  box-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.25),
-    0 6px 12px rgba(0, 0, 0, 0.15);
-  transition:
-    box-shadow 0.2s ease,
-    transform 0.15s ease,
-    background-color 0.2s ease;
-  background: #3b82f6;
+  box-shadow: none;
+  transition: all 0.2s ease;
+  background: rgba(255,255,255,0.08);
   color: white;
   font: inherit;
-  font-weight: bold;
-   
+  font-weight: 600;
+  border: 1px solid rgba(255,255,255,0.16);
 }
-.download-counter{
+
+.dashboard-buttons button:hover,
+.dashboard-buttons .nav-upload:hover {
+  transform: translateY(-1px);
+  background: linear-gradient(135deg, #60a5fa 0%, #4f46e5 100%);
+  box-shadow: 0 8px 18px rgba(59, 130, 246, 0.22);
+  color: #ffffff;
+}
+
+.download-counter {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 38px; 
-   background: #3b82f6;
+  min-height: 42px;
+  background: rgba(255,255,255,0.08);
   color: white;
-  
-    font: inherit;
-  font-weight: bold;
-    box-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.25),
-    0 6px 12px rgba(0, 0, 0, 0.15);
-     border-radius: 6px;
-  
-}
-.nav-upload:hover{
-   transform: translateY(-1px);
-  box-shadow:
-    0 4px 8px rgba(0, 0, 0, 0.40),
-    0 10px 18px rgba(0, 0, 0, 0.2);
-    background-color: #2563eb;
-}
-.dashboard-buttons  button:hover {
-    transform: translateY(-1px);
-  box-shadow:
-    0 4px 8px rgba(0, 0, 0, 0.40),
-    0 10px 18px rgba(0, 0, 0, 0.2);
-    background-color: #2563eb;
+  font: inherit;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 0 14px;
+  border: 1px solid rgba(255,255,255,0.16);
 }
 
 .mobile-menu-toggle {
   display: none;
+  position: relative;
+  z-index: 2001;
+  pointer-events: auto;
+  touch-action: manipulation;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .mobile-menu-toggle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 36px;
+    min-height: 44px;
     padding: 0 12px;
     border: none;
-    border-radius: 8px;
-    background: #1f2937;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.08);
     color: #fff;
     font-weight: 600;
   }
-  .mobile-menu-toggle:hover {
-    box-shadow: 0 8px 24px rgba(0,0,0.8,0.8);
-    font-weight: 700;
 
+  .db-navbar {
+    width: 100%;
+    left: 0;
+    right: 0;
+    padding: 0 16px;
+    min-height: 60px;
   }
 
-  .userinfo-btn-navbar {
+  .db-navbar .resucraft-logo {
+    height: 92px;
+    min-width: 160px;
+  }
+
+  .db-navbar .dashboard-buttons {
     position: absolute;
-   
-    top: 65px;
-    right: 8px;
-    left: 8px;
+    top: 68px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 12px;
     display: none;
     flex-direction: column;
-    gap: 8px;
-    padding: 10px;
-    background: #fff;
-    border: 1px solid #e5e7eb;
-    border-radius: 10px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.16);
-    z-index: 1400;
+    gap: 10px;
+    background: rgba(255,255,255,0.97);
+    border-top: 1px solid #e5e7eb;
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 12px 30px rgba(15,23,42,0.14);
+    z-index: 2100;
   }
 
-  .userinfo-btn-navbar.open {
+  .db-navbar .dashboard-buttons.open {
     display: flex;
   }
 
-  .userinfo-btn-navbar button,
-  .userinfo-btn-navbar .nav-control,
-  .userinfo-btn-navbar .locked-btn-wrapper {
+  .db-navbar .dashboard-buttons > button,
+  .db-navbar .dashboard-buttons > .nav-upload,
+  .db-navbar .dashboard-buttons > label {
     width: 100%;
+    min-width: 100%;
+    margin: 0;
     justify-content: center;
+    color: #0f172a;
+    background: #f8fafc;
+    border-color: #e2e8f0;
+    min-height: 44px;
+    padding: 10px 12px;
   }
 
+  .download-counter {
+    width: 100%;
+    color: #0f172a;
+    background: #f8fafc;
+    border-color: #e2e8f0;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
   .db-navbar {
-  width: 100%;
-  left: 0;
-  right: 0;
+    padding: 0 18px;
+  }
+
+  .db-navbar .resucraft-logo {
+    height: 104px;
+    min-width: 190px;
+  }
 }
 
-.db-navbar .dashboard-buttons {
-  position: absolute;
-  top: 60px;
-  left: 0;
-  right: 0;
-  width: 100%;
-  max-width: 100%;
-  margin: 0;
-  padding: 12px;
-  display: none;
-  flex-direction: column;
-  gap: 10px;
-  background: #fff;
-  border-top: 1px solid #e5e7eb;
-  border-radius: 0;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.16);
-  z-index: 1400;
-}
-
-.db-navbar .dashboard-buttons.open {
-  display: flex;
-}
-
-.db-navbar .dashboard-buttons > button,
-.db-navbar .dashboard-buttons > .nav-upload,
-.db-navbar .dashboard-buttons > label {
-  width: 100%;
-  min-width: 100%;
-  margin: 0;
-  justify-content: center;
-}
-#builder-mobile-actions.userinfo-btn-navbar,
-.db-navbar .dashboard-buttons {
-  position: absolute;
-  top: 100%;      /* key: directly below navbar */
-  left: 0;
-  right: 0;
-  margin: 0;
- 
-}
-
-.download-counter{
-  width: 100%;
-}
-
-}
 @media (min-width: 900px) and (max-width: 1115px) {
-  .userinfo-btn-navbar {
-    
-    font-size: .8rem;
-    font-weight: 200;
-    
+  .dashboard-buttons {
+    font-size: 0.8rem;
   }
-  .dashboard-buttons{
-    font-size: .8rem;
-    font-weight: 200;
-  }
-  
 }

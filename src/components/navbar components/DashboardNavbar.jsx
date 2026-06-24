@@ -57,10 +57,9 @@ const DashboardNavbar = ({
     return (
         <>
             <nav className='db-navbar'>
-                <nav>
-                    <ResuCraftLogo size={40} />
-
-                </nav>
+                <div className="logo-container">
+                    <ResuCraftLogo size={92} />
+                </div>
 
                 <button
                     className="mobile-menu-toggle"

@@ -1,17 +1,17 @@
 import React from "react";
 import "../../styles/Footer.css"
+import { Link } from 'react-router-dom';
 
-const AppFooter = ({ onFeedbackClick }) => {
+const AppFooter = ({ onFeedbackClick, onContactClick }) => {
   return (
     <footer className="auth-footer-global">
     
-        <p>© 2024 ResuCraft. All rights reserved.</p>
+        <p>© 2026 ResuCraft. All rights reserved.</p>
         <div className='footer-links'>
-          <a href='#privacy'>Privacy Policy</a>
-          <button className="feedback-btn" type="button" onClick={onFeedbackClick}>Feedback / Report Bug</button>
-          <a href='#terms'>Terms of Service</a>
-          <a href='#help'>Help Center</a>
-          <a href='#contact'>Contact Us</a>
+          <Link to='/privacy'>Privacy Policy</Link>
+          <Link to='/terms'>Terms of Service</Link>
+          <button className="link-btn" type="button" onClick={onContactClick}>Contact Us</button>
+          <button className="link-btn" type="button" onClick={onFeedbackClick}>Feedback / Report Bug</button>
         </div>
     </footer>
   );

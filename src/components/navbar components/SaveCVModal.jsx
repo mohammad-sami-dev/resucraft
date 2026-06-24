@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../styles/navbar styles/SaveCVModal.css'
 
-const SaveCvModal = ({ cvName, setCvName, onSave, onClose }) => {
+const SaveCvModal = ({ cvName, setCvName, onSave, onClose, isSaving, error }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (cvName.trim()) {
@@ -32,12 +32,14 @@ const SaveCvModal = ({ cvName, setCvName, onSave, onClose }) => {
             <small className="form-hint">Give your CV a descriptive name</small>
           </div>
           
+          {error && <div className="error-message" style={{color: 'red', marginBottom: '10px'}}>{error}</div>}
+
           <div className="modal-actions">
-            <button type="button" className="btn-secondary" onClick={onClose}>
+            <button type="button" className="btn-secondary" onClick={onClose} disabled={isSaving}>
               Cancel
             </button>
-            <button type="submit" className="btn-primary">
-              Save CV
+            <button type="submit" className="btn-primary" disabled={isSaving}>
+              {isSaving ? 'Saving...' : 'Save CV'}
             </button>
           </div>
         </form>

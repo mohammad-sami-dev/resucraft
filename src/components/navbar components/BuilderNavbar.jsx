@@ -56,7 +56,7 @@ const BuilderNavbar = ({
                 {isLoggedIn ? (
                     <h2>{username || 'Guest'}'s Workspace </h2>
                 ) : (
-                    <ResuCraftLogo size={40} />
+                    <ResuCraftLogo size={92} />
                 )}
             </div>
             
@@ -98,7 +98,11 @@ const BuilderNavbar = ({
                 {isLoggedIn ? (
                     <button
                         className="back-btn"
-                        onClick={() => { navigateToDashboard('/dashboard'); setMobileMenuOpen(false); }}
+                        onClick={() => {
+                          console.log("Dashboard button clicked");
+                          navigateToDashboard('/dashboard');
+                          setMobileMenuOpen(false);
+                        }}
                     >
                         <LayoutDashboard size={16} /> Dashboard
                     </button>
