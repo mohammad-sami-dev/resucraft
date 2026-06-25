@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: resucraft-backend
+    runtime: node
+    buildCommand: npm install
+    startCommand: node server/index.js
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: AI_DEV_MODE
+        value: false
+
+  - type: static
+    name: resucraft-frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://resucraft-backend.onrender.com
