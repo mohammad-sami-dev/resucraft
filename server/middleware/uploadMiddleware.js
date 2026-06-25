@@ -5,13 +5,30 @@ import multer from "multer";
 const storage = multer.memoryStorage();
 
 
+const PDF_MIME_TYPES = new Set([
+    "application/pdf",
+    "application/x-pdf",
+    "application/acrobat",
+    "applications/vnd.pdf",
+    "text/pdf",
+    "application/octet-stream",
+]);
+
 const fileFilter = (req, file, cb) => {
-    if (file.mimetype === "application/pdf") {
-        cb(null, true)
+    const isPdfMime = PDF_MIME_TYPES.has(file.mimetype);
+    const isPdfName = /\.pdf$/i.test(file.originalname || "");
+
+    if (isPdfMime && (file.mimetype !== "application/octet-stream" || isPdfName)) {
+        cb(null, true);
+        return;
     }
-    else {
-        cb(new Error('Only PDF files allowed'), false);
+
+    if (file.mimetype === "application/pdf" || isPdfName) {
+        cb(null, true);
+        return;
     }
+
+    cb(new Error("Only PDF files allowed"), false);
 };
 
 export const uploadResume = multer({

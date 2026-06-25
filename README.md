@@ -47,7 +47,7 @@ ResuCraft is a comprehensive, full-stack resume building platform engineered for
 | Backend | Node.js + Express 5 | API and server-side logic |
 | Database | MongoDB + Mongoose 8 | User data and resume storage |
 | Styling | Vanilla CSS | Modern, responsive UI |
-| AI | OpenAI API | Parsing and resume optimization |
+| AI | Google Gemini API | Parsing and resume optimization |
 
 ## Project Structure
 - `/src` : Frontend source code
@@ -67,7 +67,7 @@ ResuCraft is a comprehensive, full-stack resume building platform engineered for
 | PORT | Server | Port for backend server |
 | MONGO_URI | Server | Database connection string |
 | JWT_SECRET | Server | Secret key for auth tokens |
-| OPENAI_API_KEY| Server | API key for AI features |
+| GEMINI_API_KEY | Server | API key for Gemini resume parsing |
 | AI_DEV_MODE | Server | Enables mock AI responses for local dev |
 | VITE_API_URL | Frontend | URL of the backend API |
 

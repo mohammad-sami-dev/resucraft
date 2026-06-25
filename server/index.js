@@ -23,7 +23,9 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://ResuCraft.netlify.app"
+      "http://localhost:5174",
+      process.env.CLIENT_URL || "http://localhost:5173",
+      "https://ResuCraft.netlify.app",
     ],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     credentials: true,

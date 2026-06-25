@@ -100,6 +100,39 @@ const INITIAL_FORM_DATA = {
   customSections: [],
 };
 
+function mergeImportedFormData(normalized) {
+  return {
+    ...INITIAL_FORM_DATA,
+    ...normalized,
+    generalInfo: {
+      ...INITIAL_FORM_DATA.generalInfo,
+      ...normalized.generalInfo,
+    },
+    summary: {
+      ...INITIAL_FORM_DATA.summary,
+      ...normalized.summary,
+    },
+  };
+}
+
+function readImportedFormDataFromSession() {
+  if (typeof window === "undefined") return null;
+
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("id")) return null;
+
+  const imported = sessionStorage.getItem("importedResume");
+  if (!imported) return null;
+
+  try {
+    const parsed = JSON.parse(imported);
+    return mergeImportedFormData(normalizeImportedResume(parsed));
+  } catch (err) {
+    console.error("Failed to parse imported resume from session:", err);
+    return null;
+  }
+}
+
 const INITIAL_VISIBLE_SECTIONS = {
   education: true,
   experience: true,
@@ -151,7 +184,7 @@ const CvBuilder = ({ setGlobalLoading }) => {
   const [username, setUserName] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [customStyles, setCustomStyles] = useState(INITIAL_STYLES);
-  const [formData, setFormData] = useState(INITIAL_FORM_DATA);
+  const [formData, setFormData] = useState(() => readImportedFormDataFromSession() || INITIAL_FORM_DATA);
   const [pdfPreviewHeight, setPdfPreviewHeight] = useState(600);
   const [showFeedback, setShowFeedback] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
@@ -216,24 +249,40 @@ const CvBuilder = ({ setGlobalLoading }) => {
   // insert parsed data from uploadResume to form
 
   useEffect(() => {
-    const imported = sessionStorage.getItem("importedResume")
+    if (cvId) return;
+
+    const imported = sessionStorage.getItem("importedResume");
     if (!imported) return;
 
     try {
       const parsed = JSON.parse(imported);
+      const normalized = normalizeImportedResume(parsed);
 
-      // convert AI response -> app strcture
-      const normalized = normalizeImportedResume(parsed)
+      setFormData((prev) => ({
+        ...INITIAL_FORM_DATA,
+        ...normalized,
+        generalInfo: {
+          ...INITIAL_FORM_DATA.generalInfo,
+          ...normalized.generalInfo,
+        },
+        summary: {
+          ...INITIAL_FORM_DATA.summary,
+          ...normalized.summary,
+        },
+      }));
 
-      setFormData(normalized);
+      console.log("✅ Imported resume applied to form:", normalized);
 
-      // clear temp data
-      sessionStorage.removeItem("importedResume")
+      const clearTimer = setTimeout(() => {
+        sessionStorage.removeItem("importedResume");
+      }, 250);
+
+      return () => clearTimeout(clearTimer);
+    } catch (err) {
+      console.error("Failed to load imported resume:", err);
+      sessionStorage.removeItem("importedResume");
     }
-    catch (err) {
-      console.error("Failed to load imported resume", err);
-    }
-  }, [location.key])
+  }, [location.key, cvId]);
 
 
   // computed height for moile screens

@@ -7,6 +7,7 @@ export async function uploadResume (file, navigate,setLoading) {
     try{
         
         if (!file) throw new Error("No file selected");
+        console.log("Uploading file:", file.name, file.size, file.type);
         setLoading(true)
         const formData = new FormData();
         formData.append("resume", file);

@@ -41,6 +41,8 @@ export const login = async (req, res) => {
     const { email, password } = req.body;
     const normalizedEmail = normalizeEmail(email);
 
+    console.log("=== Login attempt ===", req.body?.email);
+
     try{
         const user = await findUserByEmail(normalizedEmail);
         if(!user) return res.status(400).json({ message: 'Invalid credentials'});
@@ -53,6 +55,7 @@ export const login = async (req, res) => {
 
     }
     catch(err) {
+        console.error("=== Login error ===", err.message);
         res.status(500).json({ message:'Login error', error: err.message })
     }
 };
