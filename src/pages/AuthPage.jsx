@@ -21,7 +21,7 @@ const AuthPage = ({ setGlobalLoading, darkMode, setDarkMode }) => {
   const [message, setMessage] = useState('');
   const [username, setUsername] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [showIntro, setShowIntro] = useState(true);
+  const [showIntro, setShowIntro] = useState(false);
   const [errors, setErrors] = useState({});
   const [cvDownloads, setCvDownloads] = useState(0);
   const [showFeedback, setShowFeedback] = useState(false);
@@ -125,7 +125,6 @@ const AuthPage = ({ setGlobalLoading, darkMode, setDarkMode }) => {
   return (
     <div
       className={`auth-page ${!showIntro ? 'intro-closed' : ''}`}
-      style={{ paddingTop: '90px', boxSizing: 'border-box' }}
     >
 
       <header
@@ -149,7 +148,7 @@ const AuthPage = ({ setGlobalLoading, darkMode, setDarkMode }) => {
         {/* Left Panel - Introduction/Tutorial */}
 
         {showIntro && (
-          <div className='intro-panel full-screen'>
+          <div className='intro-panel'>
             <div className='intro-header'>
               <h2>Getting Started</h2>
               <button className='close-intro' onClick={handleIntroFinish}>

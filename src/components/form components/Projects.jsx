@@ -1,5 +1,5 @@
 import React from "react";
-import { Plus, Trash2 } from 'lucide-react';
+import { Trash2, Plus } from 'lucide-react';
 
 const Projects = ({ projects = [], setProjects, visible, setVisible }) => {
     const addProject = () => {
@@ -56,7 +56,9 @@ const Projects = ({ projects = [], setProjects, visible, setVisible }) => {
                     {projects.length === 0 ? (
                         <div className="empty-state-form">
                             <p>No projects added yet — click the button below to add your first entry.</p>
-                            <button className="add-btn" onClick={addProject}><Plus size={16} /> Add Project</button>
+                            <button type="button" className="add-btn" onClick={addProject} aria-label="Add project">
+                                <Plus size={16} />
+                            </button>
                         </div>
                     ) : (
                         projects.map((project, index) => (
@@ -89,12 +91,12 @@ const Projects = ({ projects = [], setProjects, visible, setVisible }) => {
                                                     }}
                                                 />
                                                 {isLast ? (
-                                                    <button onClick={() => updateProject(index, "keyFeatures", { points: [...project.keyFeatures.points, ""] }, true)}>
-                                                        <Plus size={14} />
+                                                    <button type="button" aria-label="Add feature" onClick={() => updateProject(index, "keyFeatures", { points: [...project.keyFeatures.points, ""] }, true)}>
+                                                        <Plus size={16} />
                                                     </button>
                                                 ) : (
-                                                    <button onClick={() => updateProject(index, "keyFeatures", { points: project.keyFeatures.points.filter((_, i) => i !== pIdx) }, true)}>
-                                                        <Trash2 size={14} />
+                                                    <button type="button" aria-label="Remove feature" onClick={() => updateProject(index, "keyFeatures", { points: project.keyFeatures.points.filter((_, i) => i !== pIdx) }, true)}>
+                                                        <Trash2 size={16} />
                                                     </button>
                                                 )}
                                             </div>
@@ -108,8 +110,12 @@ const Projects = ({ projects = [], setProjects, visible, setVisible }) => {
                                     onChange={(e) => updateProject(index, "link", e.target.value)}
                                 />
                                 <div className="add-rem-proj-btn">
-                                    <button className="remove-btn" onClick={() => removeProject(index)}><Trash2 size={16} /> Remove</button>
-                                    <button className="add-btn" onClick={addProject}><Plus size={16} /> Add Project</button>
+                                    <button type="button" className="remove-btn" onClick={() => removeProject(index)} aria-label="Remove project">
+                                        <Trash2 size={16} />
+                                    </button>
+                                    <button type="button" className="add-btn" onClick={addProject} aria-label="Add project">
+                                        <Plus size={16} />
+                                    </button>
                                 </div>
                             </div>
                         ))

@@ -1,5 +1,5 @@
 import React from "react";
-import { Plus, Trash2 } from 'lucide-react';
+import { Trash2, Plus } from 'lucide-react';
 
 function Experience({ data = [], setData, visible, setVisible }) {
 
@@ -59,7 +59,9 @@ function Experience({ data = [], setData, visible, setVisible }) {
           {data.length === 0 ? (
             <div className="empty-state-form">
               <p>No experience added yet — click the button below to add your first entry.</p>
-              <button className="add-btn" onClick={addExperience}><Plus size={16} /> Add Experience</button>
+              <button type="button" className="add-btn" onClick={addExperience} aria-label="Add experience">
+                <Plus size={16} />
+              </button>
             </div>
           ) : (
             data.map((exp, index) => (
@@ -117,6 +119,7 @@ function Experience({ data = [], setData, visible, setVisible }) {
                         {isLast ? (
                           <button
                             type="button"
+                            aria-label="Add achievement"
                             disabled={isEmpty}
                             onClick={() => {
                               const updatedPoints = [...exp.achievements.points, ""];
@@ -128,11 +131,12 @@ function Experience({ data = [], setData, visible, setVisible }) {
                               );
                             }}
                           >
-                            <Plus size={14} />
+                            <Plus size={16} />
                           </button>
                         ) : (
                           <button
                             type="button"
+                            aria-label="Remove achievement"
                             onClick={() => {
                               const updatedPoints = exp.achievements.points.filter(
                                 (_, i) => i !== pointIndex
@@ -145,7 +149,7 @@ function Experience({ data = [], setData, visible, setVisible }) {
                               );
                             }}
                           >
-                            <Trash2 size={14} />
+                            <Trash2 size={16} />
                           </button>
                         )}
                       </div>
@@ -173,8 +177,12 @@ function Experience({ data = [], setData, visible, setVisible }) {
                 </div>
                 
                 <div className="exp-add-rem-btn">
-                  <button className="remove-btn" onClick={() => removeExperience(index)}><Trash2 size={16} /> Remove</button>
-                  <button className="add-btn" onClick={addExperience}><Plus size={16} /> Add Experience</button>
+                  <button type="button" className="remove-btn" onClick={() => removeExperience(index)} aria-label="Remove experience">
+                    <Trash2 size={16} />
+                  </button>
+                  <button type="button" className="add-btn" onClick={addExperience} aria-label="Add experience">
+                    <Plus size={16} />
+                  </button>
                 </div>
               </div>
             ))

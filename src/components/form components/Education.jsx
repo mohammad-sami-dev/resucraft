@@ -1,5 +1,5 @@
 import React from "react";
-import { Plus, Trash2 } from 'lucide-react';
+import { Trash2, Plus } from 'lucide-react';
 
 const Education = ({ data = [], setData, visible, setVisible }) => {
     const addEducation = () => {
@@ -48,7 +48,9 @@ const Education = ({ data = [], setData, visible, setVisible }) => {
                     {data.length === 0 ? (
                         <div className="empty-state-form">
                             <p>No education history added yet — click the button below to add your first entry.</p>
-                            <button className="add-btn" onClick={addEducation}><Plus size={16} /> Add Education</button>
+                            <button type="button" className="add-btn" onClick={addEducation} aria-label="Add education">
+                                <Plus size={16} />
+                            </button>
                         </div>
                     ) : (
                         data.map((edu, index) => (
@@ -95,12 +97,12 @@ const Education = ({ data = [], setData, visible, setVisible }) => {
                                                     }}
                                                 />
                                                 {isLast ? (
-                                                    <button onClick={() => updateEducation(index, "achievements", { points: [...edu.achievements.points, ""] }, true)}>
-                                                        <Plus size={14} />
+                                                    <button type="button" aria-label="Add detail" onClick={() => updateEducation(index, "achievements", { points: [...edu.achievements.points, ""] }, true)}>
+                                                        <Plus size={16} />
                                                     </button>
                                                 ) : (
-                                                    <button onClick={() => updateEducation(index, "achievements", { points: edu.achievements.points.filter((_, i) => i !== pIdx) }, true)}>
-                                                        <Trash2 size={14} />
+                                                    <button type="button" aria-label="Remove detail" onClick={() => updateEducation(index, "achievements", { points: edu.achievements.points.filter((_, i) => i !== pIdx) }, true)}>
+                                                        <Trash2 size={16} />
                                                     </button>
                                                 )}
                                             </div>
@@ -127,8 +129,12 @@ const Education = ({ data = [], setData, visible, setVisible }) => {
                                     </div>
                                 </div>
                                 <div className="add-rem-edu-btn">
-                                    <button className="remove-btn" onClick={() => removeEducation(index)}><Trash2 size={16} /> Remove</button>
-                                    <button className="add-btn" onClick={addEducation}><Plus size={16} /> Add Education</button>
+                                    <button type="button" className="remove-btn" onClick={() => removeEducation(index)} aria-label="Remove education">
+                                        <Trash2 size={16} />
+                                    </button>
+                                    <button type="button" className="add-btn" onClick={addEducation} aria-label="Add education">
+                                        <Plus size={16} />
+                                    </button>
                                 </div>
                             </div>
                         ))

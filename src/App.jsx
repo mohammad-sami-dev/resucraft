@@ -2,6 +2,7 @@
 import React, { Suspense, lazy, useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import SplashScreen from "./components/SplashScreen";
+import ScrollToTop from "./components/common/ScrollToTop";
 
 const ResumeLoading = lazy(() => import("./components/animations/ResumeLoading"));
 
@@ -26,6 +27,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       {!splashDone && <SplashScreen onDone={() => setSplashDone(true)} />}
       <div className='app-scale' style={{ opacity: splashDone ? 1 : 0, transition: 'opacity 0.4s ease' }}>
 

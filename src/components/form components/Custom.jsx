@@ -1,4 +1,5 @@
 import React from "react";
+import { Trash2, Plus } from "lucide-react";
 
 const createEmptySection = () => ({
   title: "",
@@ -246,13 +247,14 @@ const Custom = ({ data = [], setData, visible, setVisible }) => {
                       <button
                         type="button"
                         disabled={isLast && isEmpty}
+                        aria-label={isLast ? "Add list item" : "Remove list item"}
                         onClick={() =>
                           isLast
                             ? addListItem(sectionIndex)
                             : removeListItem(sectionIndex, itemIndex)
                         }
                       >
-                        {isLast ? "Add" : "Remove"}
+                        {isLast ? <Plus size={16} /> : <Trash2 size={16} />}
                       </button>
                     </div>
                   );
@@ -273,13 +275,14 @@ const Custom = ({ data = [], setData, visible, setVisible }) => {
                       <button
                         type="button"
                         disabled={isLast && isEmpty}
+                        aria-label={isLast ? "Add link" : "Remove link"}
                         onClick={() =>
                           isLast
                             ? addLink(sectionIndex)
                             : removeLink(sectionIndex, linkIndex)
                         }
                       >
-                        {isLast ? "Add" : "Remove"}
+                        {isLast ? <Plus size={16} /> : <Trash2 size={16} />}
                       </button>
                     </div>
                   );
@@ -305,8 +308,8 @@ const Custom = ({ data = [], setData, visible, setVisible }) => {
                 </div>
               </div>
               <div className="custom-actions-row">
-                <button type="button" className="rem-custom-btn" onClick={() => removeSection(sectionIndex)}>
-                  Remove Section
+                <button type="button" className="rem-custom-btn" onClick={() => removeSection(sectionIndex)} aria-label="Remove section">
+                  <Trash2 size={16} />
                 </button>
 
               </div>
@@ -317,7 +320,7 @@ const Custom = ({ data = [], setData, visible, setVisible }) => {
 
 
           <button type="button" className="add-custom-btn" onClick={addSection}>
-            + Add Section
+            <Plus size={16} /> Add Section
           </button>
 
 

@@ -17,7 +17,7 @@
 .form-section > div[class*="section"] {
   background: white;
   border-radius: 12px;
-  padding: 28px;
+  padding: 16px; /* Reduced padding */
   border: 1px solid #e2e8f0;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   transition: box-shadow 0.3s ease;
@@ -63,6 +63,7 @@
   transition: all 0.3s ease;
   background: white;
   color: black;
+  margin-bottom: 8px; /* Added spacing */
 }
 
 .form-section input:focus,
@@ -78,7 +79,7 @@
   font-size: 14px;
   font-weight: 500;
   color: #475569;
-  margin-bottom: 8px;
+  margin-bottom: 12px; /* Increased spacing */
 }
 
 /* Button Styling */
@@ -93,14 +94,22 @@
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
-  align-items: center;
+  align-items: center; /* Vertically centered */
   justify-content: center;
   gap: 8px;
+  margin-left: 8px; /* Added margin for buttons */
 }
 
 .form-section button:not(.toggle-pill):hover {
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.form-section button:not(.toggle-pill) svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+  flex-shrink: 0;
 }
 
 /* Remove button variant */
@@ -203,7 +212,7 @@
   border-left: 4px solid #3b82f6;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px; /* Increased gap */
 }
 .projects-key-feature{
   display: flex;
@@ -223,22 +232,70 @@
     display: flex;
     flex-direction: row;
     width: 100%;
-    gap: 12px;
+    gap: 8px;
+    align-items: center;
   }
 
+.project-key-feature-form{
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
 
+.education-achievements-form button,
+.experience-achievements-form button,
+.project-key-feature-form button,
+.skills-container-btns button,
+.lang-delete-btn,
+.hobbies-container-form .hobby-entry button,
+.custom-inline-actions button,
+.rem-custom-btn,
+.add-rem-edu-btn .add-btn,
+.add-rem-edu-btn .remove-btn,
+.exp-add-rem-btn .add-btn,
+.exp-add-rem-btn .remove-btn,
+.add-rem-proj-btn .add-btn,
+.add-rem-proj-btn .remove-btn,
+.empty-state-form .add-btn {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  padding: 0;
+  margin-left: 0;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skills-container-btns {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
 .add-rem-edu-btn,
 .exp-add-rem-btn,
 .add-rem-proj-btn{
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
+  gap: 8px;
+  align-items: center;
 }
 
 .language-entry-form{
   display: flex;
-  gap: 5px;
+  gap: 10px;
+  align-items: center;
 }
-.language-entry-form option,.language-entry-form input {
+
+.lang-delete-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.language-entry-form option,
+.language-entry-form input {
   height: 50px;
 }
 .language-entry-form select {
@@ -250,6 +307,11 @@
 .add-lang-btn{
   width: 100%;
   margin-top: 5px;
+}
+
+.add-hobby-btn {
+  width: 100%;
+  margin-top: 8px;
 }
 
 /* Skills Container */
@@ -264,26 +326,30 @@
 }
 
 .skills-container-btns button {
-  
-  height: 40px;
-  border-radius: 50%;
-  
-  font-size: 20px;
+  border-radius: 8px;
 }
 
 .custom-actions-row{
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 .custom-inline-actions{
   display: flex;
+  gap: 8px;
+  align-items: center;
 }
 .custom-section-block{
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.add-custom-btn, .rem-custom-btn{
+
+.add-custom-btn {
+  margin-top: 8px;
   width: 100%;
+}
+
+.rem-custom-btn {
+  margin-bottom: 8px;
 }
 .custom-container-form select{
   height: 50px;
@@ -363,9 +429,9 @@
   }
 
   .skills-container-btns button {
-    width: 100%;
+    width: 36px;
     border-radius: 8px;
-    height: 40px;
+    height: 36px;
   }
 
   .toggle-visibility-btn {
@@ -377,8 +443,28 @@
   justify-content: space-between;
   }
 
-  .form-section button:not(.toggle-pill) {
+  .form-section button:not(.toggle-pill):not(.lang-delete-btn):not(.add-custom-btn):not(.rem-custom-btn):not(.add-lang-btn):not(.add-hobby-btn):not(.add-btn):not(.remove-btn) {
     width: 100%;
+  }
+
+  .form-section .education-achievements-form button,
+  .form-section .experience-achievements-form button,
+  .form-section .project-key-feature-form button,
+  .form-section .lang-delete-btn,
+  .form-section .skills-container-btns button,
+  .form-section .custom-inline-actions button,
+  .form-section .rem-custom-btn,
+  .form-section .hobbies-container-form .hobby-entry button,
+  .form-section .add-rem-edu-btn .add-btn,
+  .form-section .add-rem-edu-btn .remove-btn,
+  .form-section .exp-add-rem-btn .add-btn,
+  .form-section .exp-add-rem-btn .remove-btn,
+  .form-section .add-rem-proj-btn .add-btn,
+  .form-section .add-rem-proj-btn .remove-btn,
+  .form-section .empty-state-form .add-btn {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
   }
 
 
@@ -404,8 +490,8 @@
   margin-bottom: 8px;
 }
 
-.hobbies-container-form  button{
-  width: 100%;
+.hobbies-container-form .hobby-entry button {
+  align-self: flex-end;
 }
 .hobbies-container-form .hobby-entry textarea{
   height: 90px;

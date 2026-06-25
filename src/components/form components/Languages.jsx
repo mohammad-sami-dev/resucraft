@@ -1,4 +1,5 @@
 import React from "react";
+import { Trash2, Plus } from "lucide-react";
 
 const Languages = ({ data = [], setData, visible, setVisible }) => {
     const addLanguage = () => {
@@ -61,14 +62,17 @@ const Languages = ({ data = [], setData, visible, setVisible }) => {
                                 <button
                                     className="lang-delete-btn"
                                     onClick={() => removeLanguage(index)}
+                                    type="button"
                                 >
-                                    
+                                    <Trash2 size={16} />
                                 </button>
                             )}
                         </div>
                     ))}
 
-                    <button className='add-lang-btn' onClick={addLanguage}>Add Language</button>
+                    <button type="button" className="add-lang-btn" onClick={addLanguage}>
+                        <Plus size={16} /> Add Language
+                    </button>
                 </>
             )}
         </div>

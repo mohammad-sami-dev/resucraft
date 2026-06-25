@@ -1,11 +1,9 @@
-/* =========================
-   INTRO PAGE CONTAINER
-========================= */
-
 .intro-page-container {
     display: flex;
     flex-direction: column;
     height: 100%;
+    max-width: 720px;
+    width: 100%;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     border-radius: 16px;
     overflow: hidden;

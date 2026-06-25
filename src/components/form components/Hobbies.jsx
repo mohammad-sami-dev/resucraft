@@ -1,4 +1,5 @@
 import React from "react";
+import { Trash2, Plus } from "lucide-react";
 
 const Hobbies = ({ data = [], setData, visible, setVisible }) => {
 
@@ -54,11 +55,15 @@ const Hobbies = ({ data = [], setData, visible, setVisible }) => {
                                 value={hobby.description || ""}
                                 onChange={(e) => updateHobby(index, "description", e.target.value)}
                             />
-                            <button onClick={() => removeHobby(index)}>Remove Hobby</button>
+                            <button type="button" onClick={() => removeHobby(index)} aria-label="Remove hobby">
+                                <Trash2 size={16} />
+                            </button>
 
                         </div>
                     ))}
-                    <button onClick={addHobby}>Add Hobby</button>
+                    <button type="button" className="add-hobby-btn" onClick={addHobby}>
+                        <Plus size={16} /> Add Hobby
+                    </button>
                 </>
             )}
         </div>

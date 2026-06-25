@@ -76,9 +76,24 @@ body {
   border: 1px solid var(--color-border);
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
   position: relative;
   overflow-y: auto;
   max-height: calc(100vh - 80px);
+}
+
+.ResuCraft-preview-container.full-screen {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  flex: 1 1 auto;
+}
+
+.ResuCraft-preview-container.full-screen > iframe {
+  margin: 0 auto;
 }
 
 .preview-wrapper {
@@ -86,6 +101,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  width: 100%;
   overflow: auto;
   padding: 24px;
   background: #f1f5f9;
@@ -95,6 +111,7 @@ body {
   background: white;
   box-shadow: var(--shadow-lg);
   border-radius: 4px;
+  margin: 0 auto;
   transform: scale(var(--preview-scale));
   transform-origin: top center;
   transition: transform 0.2s ease;

@@ -1,4 +1,5 @@
 import React from "react";
+import { Trash2, Plus } from "lucide-react";
 
 const Skills = ({ data, setData, visible, setVisible }) => {
 
@@ -61,9 +62,13 @@ const Skills = ({ data, setData, visible, setVisible }) => {
                             />
                             <div className="skills-container-btns">
                                 {index === data.length - 1 ? (
-                                    <button onClick={addSkill}>Add</button>
+                                    <button type="button" onClick={addSkill} aria-label="Add skill">
+                                        <Plus size={16} />
+                                    </button>
                                 ) : (
-                                    <button onClick={() => removeSkill(index)}>Remove</button>
+                                    <button type="button" onClick={() => removeSkill(index)} aria-label="Remove skill">
+                                        <Trash2 size={16} />
+                                    </button>
                                 )}
                             </div>
                         </div>
